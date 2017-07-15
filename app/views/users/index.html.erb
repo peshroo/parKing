@@ -1,0 +1,41 @@
+<h1>parKing</h1>
+
+<h1>Create User</h1>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |m| %>
+      <li class="error"><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @user do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.telephone_field :phone_number %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= f.submit 'Sign Up' %>
+
+<% end %>
