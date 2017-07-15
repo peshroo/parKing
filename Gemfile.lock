@@ -41,6 +41,8 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
+    awesome_print (1.7.0)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -63,6 +65,12 @@ GEM
     concurrent-ruby (1.0.5)
     erubi (1.6.1)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
+    ffaker (2.5.0)
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -174,9 +182,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
+  bcrypt (~> 3.1.7)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  factory_girl_rails
+  ffaker
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.7)
