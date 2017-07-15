@@ -1,0 +1,64 @@
+<h1>parKing</h1>
+<a href="#">About</a>
+<a href="#">Register</a>
+<% if current_user %>
+<a href="#">Log out</a>
+<% else %>
+<a href="#">Log in</a>
+<% end %>
+
+<div class="Book">
+  <a href="#">Book</a>
+</div>
+<div class="Rent">
+  <a href="#">Rent</a>
+</div>
+
+<%= form_for @user do |f| %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= f.submit 'Sign Up' %>
+
+<% end %>
+
+<h1>Log In</h1>
+
+<%= form_for :sessions, url: sessions_path do |f| %>
+
+  <div class='field'>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit 'Login' %>
+
+<% end %>
