@@ -1,3 +1,57 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  margin: 0;
+}
+.new_user,
+.login {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(30,30,30,0.8);
+}
+
+.new_user > form,
+.login > form {
+  display: block;
+  width: 400px;
+  height: 24em;
+  padding: 2em;
+  background-color: #b9c2cc;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.new_user > form input {
+    display: block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 100%;
+    margin: 1em 0;
+    color: #555;
+}
+.close {
+    display: block;
+    border: none;
+    outline: none;
+    width: 1em;
+    height: 1em;
+    font: 1.5em Arial;
+    background-color: #bc2a39;
+    color: #e7c0b9;
+    border-radius: 0.5em;
+    line-height: 0;
+
+    position: absolute;
+    top: 0.25em;
+    right: 0.25em;
+}
