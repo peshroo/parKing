@@ -1,54 +1,55 @@
-<h1>parKing</h1>
-<a href="#">About</a>
-<a href="#">Register</a>
+<h1>ParK-King</h1>
 <% if current_user %>
-<a href="#">Log out</a>
+  <h3>Aloha <%= @current_user.first_name %>!</h3>
+  <%= link_to "Logout", sessions_path, method: :delete %>
 <% else %>
-<a href="#">Log in</a>
+  <a href="#" class="login_link">Login</a>
 <% end %>
-
+<a href="#" class="new_user_link">Register</a>
+<a href="#">About</a>
 <div class="Book">
   <a href="#">Book</a>
 </div>
 <div class="Rent">
   <a href="#">Rent</a>
 </div>
+<div class="new_user">
+  <%= form_for @user do |f| %>
+    <button type="button" class="close">x</button>
+    <div class="field">
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </div>
 
-<%= form_for @user do |f| %>
+    <div class="field">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
+    <div class='field'>
+      <%= f.label :email %><br>
+      <%= f.email_field :email %>
+    </div>
 
-  <div class="field">
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name %>
-  </div>
+    <div class='field'>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
 
-  <div class='field'>
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </div>
+    <div class='field'>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
 
-  <div class='field'>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
+    <%= f.submit 'Sign Up' %>
 
-  <div class='field'>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <% end %>
+</div>
+<div class="login">
 
-  <%= f.submit 'Sign Up' %>
-
-<% end %>
-
-<h1>Log In</h1>
 
 <%= form_for :sessions, url: sessions_path do |f| %>
-
+  <button type="button" class="close">x</button>
   <div class='field'>
     <%= f.label :email %><br>
     <%= f.email_field :email %>

@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @user = User.new
+    @current_user = current_user
   end
 
   def create
@@ -18,7 +19,7 @@ class HomeController < ApplicationController
       render :new
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
