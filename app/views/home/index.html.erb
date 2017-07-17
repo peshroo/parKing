@@ -1,11 +1,13 @@
 <h1>ParK-King</h1>
 <% if current_user %>
   <h3>Aloha <%= @current_user.first_name %>!</h3>
+  <%= link_to "My Profile", user_path(@current_user.id) %>
+  |
   <%= link_to "Logout", sessions_path, method: :delete %>
 <% else %>
   <a href="#" class="login_link">Login</a>
+  <a href="#" class="new_user_link">Register</a>
 <% end %>
-<a href="#" class="new_user_link">Register</a>
 <a href="#">About</a>
 <div class="Book">
   <a href="#">Book</a>
