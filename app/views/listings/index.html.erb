@@ -4,10 +4,11 @@
 
 <% @listings.each do |listing| %>
   <div class="listing">
-    <h3>Name: <%= link_to listing.name, listing %></h3>
-    Location: <%= listing.location %>
-    Description: <%= listing.description %>
-    Price: <%= listing.price %>
-    Rating: <%= listing.rating %>
+    <h3><%= link_to listing.name, listing %></h3>
+    Location: <%= listing.location %><br>
+    Description: <%= listing.description %><br>
+    Price: <%= listing.price %><br>
+    Rating: <%= listing.rating %><br>
+    Available Time: <%= listing.start %>-<%= listing.end %>
   </div>
 <% end %>

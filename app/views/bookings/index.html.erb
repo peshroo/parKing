@@ -1,0 +1,11 @@
+<h3>All Bookings</h3>
+<% @booking.each do |booking| %>
+  <ul>
+    <li>
+      <p> Name: <%= booking.listing.name %> </p>
+      <p> Date: <%= booking.date %> at <%= booking.time %>  </p>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to("Back to All Listings", root_url, class:'back_listings') %>
