@@ -1,8 +1,9 @@
 <h3>All Bookings</h3>
+
 <% @booking.each do |booking| %>
   <ul>
     <li>
-      <p> Name: <%= booking.listing.name %> </p>
+      <p> <%= link_to booking.id, listing_booking_path(booking.listing.id, booking.id) %> </p>
       <p> Date: <%= booking.date %> at <%= booking.time %>  </p>
     </li>
   </ul>

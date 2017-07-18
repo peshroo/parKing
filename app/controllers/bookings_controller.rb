@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-    before_action :listing?, only: [:new, :create, :edit, :update]
+    before_action :listing?, only: [:new, :create, :edit, :update, :destroy]
     before_action :booking?, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -43,15 +43,17 @@ class BookingsController < ApplicationController
     def destroy
       @booking.destroy
       flash[:notice] = "Your booking has been successfully cancelled!"
-      redirect_to users_path
+      redirect_to listing_bookings_path(@listing)
     end
 
     def booking_params
       params.require(:booking).permit(:date, :time)
     end
+
     def listing?
       @listing = Listing.find(params[:listing_id])
     end
+
     def booking?
       @booking = Booking.find(params[:id])
     end

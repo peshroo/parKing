@@ -1,12 +1,3 @@
-<h1>Make A New Booking</h1>
+<h1>New Booking</h1>
 
-<%= form_for([@listing, @booking]) do |f| %>
-  <p>
-    <%= f.label :date, 'Please Choose A Date' %><br>
-    <%= f.date_field :date, min: Date.today %>
-  </p>
-
-  <p>
-    <%= f.submit "Save" %>
-  </p>
-<% end %>
+<%= render 'form_bookings', booking: @booking %>
