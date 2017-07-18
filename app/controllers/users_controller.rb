@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit
     unless @user
       flash[:error] = "Must be logged in"
@@ -53,6 +52,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
 
   def edit_user_form
     respond_to do |format|
