@@ -5,7 +5,8 @@ class Listing < ApplicationRecord
 
   # belongs_to  :user
   has_many    :bookings
-  has_many    :ratings
+  has_many    :reviews
+
 
   def operating_hours
     "From #{self.start}:00 to #{self.end}:00"
