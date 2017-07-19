@@ -61,6 +61,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_bookings
+    @user = current_user
+    @bookings = @user.bookings
+  end
+
   def show_bookings
     @bookings = @user.bookings
     respond_to do |format|

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'listing_search_form' => 'listings#listing_search_form'
   get 'listing_search' => 'listings#search'
   get 'show_user_bookings' => 'users#show_bookings'
+  get 'user_bookings' => 'users#user_bookings'
 
   resources :home
   resources :users
