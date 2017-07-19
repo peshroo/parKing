@@ -6,6 +6,7 @@
 <% @listings.each do |listing| %>
   <div class="listing">
     <h3><%= link_to listing.name, listing %></h3>
+    <%= image_tag(listing.image) %><br>
     Location: <%= listing.location %><br>
     Description: <%= listing.description %><br>
     Price: $<%= listing.price %>/hour<br>
