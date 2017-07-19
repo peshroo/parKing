@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
 
       if @booking.save
         flash[:notice] = "Your booking has been successfully created!"
-        redirect_to listing_bookings_path(params[:listing_id])
+        redirect_to user_bookings_path
       else
         flash[:alert] = "Something went wrong!"
         render :new

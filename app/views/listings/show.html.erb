@@ -11,7 +11,7 @@
 |
 <% if current_user %>
   <% if current_user.bookings.find_by(listing_id: @listing.id) %>
-    <span>Booked <%= current_user.bookings.find_by(listing_id: @listing.id).time.strftime('%b %e, %l:%M %p') %></span>
+    <span>Booked <%= current_user.bookings.find_by(listing_id: @listing.id).human_time %></span>
   <% else %>
     <%= link_to "Book Now", new_listing_booking_path(@listing) %>
   <% end %>

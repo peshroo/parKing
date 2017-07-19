@@ -4,7 +4,7 @@
   <ul>
     <li>
       <p> <%= link_to booking.id, listing_booking_path(booking.listing.id, booking.id) %> </p>
-      <p> Date: <%= booking.date.strftime('%b %e') %> at <%= booking.time.strftime('%l:%M %p') %>  </p>
+      <p> Date: <%= booking.date %> at <%= booking.human_time %>  </p>
     </li>
   </ul>
 <% end %>
