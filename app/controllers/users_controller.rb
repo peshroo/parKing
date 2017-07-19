@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:edit, :update, :edit_user_form]
+  before_action :find_user, only: [:edit, :update, :edit_user_form, :show_bookings]
 
   def index
 
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    @bookings = @user.bookings
   end
 
   def create
@@ -55,6 +56,13 @@ class UsersController < ApplicationController
 
 
   def edit_user_form
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_bookings
+    @bookings = @user.bookings
     respond_to do |format|
       format.js
     end

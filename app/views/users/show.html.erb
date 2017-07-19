@@ -7,6 +7,7 @@
 </div>
 <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
 <%= link_to "Delete this account", "/users/#{@user.id}", method: :delete %>
-<div class="edit_form">
+<%= link_to "Booking History", show_user_bookings_path, class: 'show_bookings_link', remote: true %>
+<div class="user_partial">
 
 </div>

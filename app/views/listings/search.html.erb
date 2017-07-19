@@ -1,0 +1,9 @@
+<div class="search_results">
+  <% @listings.each do |listing| %>
+    <h3><%= listing.name %></h3>
+    <p><%= listing.location %></p>
+    <p>$<%= listing.price %></p>
+    <p><%= listing.start.strftime('%b %e, %l:%M %p') %> - <%= listing.end.strftime('%b %e, %l:%M %p') %></p>
+    <%= link_to "Book Now", new_listing_booking_path(listing) %>
+  <% end %>
+</div>
