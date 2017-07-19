@@ -6,7 +6,6 @@ class ListingsController < ApplicationController
 
     def show
       @listing = Listing.find(params[:id])
-      @bookings = Booking.where(listing_id: params[:id])
     end
 
     def new
@@ -46,6 +45,15 @@ class ListingsController < ApplicationController
       redirect_to listings_path
     end
 
+    def listing_search_form
+    end
+
+    def search
+      @listings = Listing.where('name LIKE ?', "%#{params[:name]}%").select { |t| t.start.hour < params[:date][:hour].to_i && t.end.hour > params[:date][:hour].to_i}
+      # @listings = Listing.where('name LIKE ? AND start <= ? AND end >= ?', "%#{params[:name]}%", params[:time], params[:time])
+    end
+
+private
     def listing_params
       params.require(:listing).permit(:name, :location, :description, :price, :rating, :start, :end)
     end

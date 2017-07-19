@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170718235617) do
     t.integer "user_id"
     t.integer "listing_id"
     t.date "date"
-    t.time "time"
+    t.integer "time"
   end
 
   create_table "listings", force: :cascade do |t|

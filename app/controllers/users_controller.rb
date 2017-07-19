@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :find_user, only: [:edit, :update, :edit_user_form, :show_bookings]
+
   def index
 
   end
@@ -10,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    @bookings = @user.bookings
   end
 
   def create
@@ -41,20 +44,48 @@ class UsersController < ApplicationController
     @user.assign_attributes(user_params)
 
     if @user.save
+      # default behaviour of flash works on a redirect
       flash[:notice] = 'Account successfully updated!'
-      redirect_to edit_users_path
+      redirect_to user_path(@user)
     else
+      # flash.now works on the same request
       flash.now[:error] = 'Sorry, try again!'
       render :edit
     end
   end
 
+  def edit_user_form
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def user_bookings
+    @user = current_user
+    @bookings = @user.bookings
+  end
+
+  def show_bookings
+    @bookings = @user.bookings
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
+    @user = User.find(session[:user_id])
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_url
   end
 
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def find_user
+    @user = current_user
   end
 
 end

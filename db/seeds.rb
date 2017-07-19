@@ -44,6 +44,7 @@ end
     listing_id: Listing.all.sample.id,
     rating: rand(10),
     comment: Faker::Lorem.paragraph
+    
 
 
   )

@@ -21,11 +21,11 @@ class Booking < ApplicationRecord
   end
 
   def human_time
-    if self.time == 12
+    if time == 12
       return "#{time} PM"
-    elsif self.time== 0
+    elsif time == 0
       return "12 AM"
-    elsif self.time < 12
+    elsif time < 12
       return "#{time} AM"
     else
       return "#{time - 12} PM"
