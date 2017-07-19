@@ -1,23 +1,9 @@
-<% if current_user %>
-  <h3>Aloha <%= @current_user.first_name %>!</h3>
-  <%= link_to "My Profile", user_path(@current_user.id) %>
-  |
-  <%= link_to "Logout", sessions_path, method: :delete %>
-  <%= link_to 'Listings', listings_path %>
-<% else %>
-  <a href="#" class="login_link">Login</a>
-  <a href="#" class="new_user_link">Register</a>
-<% end %>
 
-<a href="#">About</a>
-
-<div class="Book">
+<div class="book">
   <%= link_to "Book", listing_search_form_path %>
- <div class="listing_search">
- </div>
 </div>
 
-<div class="Rent">
+<div class="rent">
   <a href="#">Rent</a>
 </div>
 

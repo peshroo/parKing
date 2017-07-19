@@ -4,6 +4,10 @@
     <p><%= listing.location %></p>
     <p>$<%= listing.price %></p>
     <p><%= listing.start.strftime('%b %e, %l:%M %p') %> - <%= listing.end.strftime('%b %e, %l:%M %p') %></p>
-    <%= link_to "Book Now", new_listing_booking_path(listing) %>
+    <% if current_user.bookings.find_by(listing_id: listing.id) %>
+      <p>Booked <%= current_user.bookings.find_by(listing_id: listing.id).time %>:00</p>
+    <% else %>
+      <%= link_to "Book Now", new_listing_booking_path(listing) %>
+    <% end %>
   <% end %>
 </div>

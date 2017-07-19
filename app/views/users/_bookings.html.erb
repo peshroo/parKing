@@ -1,5 +1,5 @@
 <% @bookings.each do |booking| %>
-  <h3><%= booking.listing.name %></h3>
+  <h3><%= link_to booking.listing.name, listing_path(booking.listing.id) %></h3>
   <p><%= booking.listing.location %></p>
   <p>$<%= booking.listing.price %></p>
   <p><%= booking.date %> at <%= booking.time %></p>
