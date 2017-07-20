@@ -5,26 +5,55 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
-header,
-h1 {
+.home.index {
+  background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+header {
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 100%;
-  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 26px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  h1 {
+    height: 100%;
+    line-height: 50px;
+    font: {
+      size: 21px;
+      weight: bold;
+    }
+    // background-image: url('crown-512-pink.png');
+    background-size: 17px;
+    background-repeat: no-repeat;
+    background-position: 42px 0px;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
   a {
     text-decoration: none;
     color: white;
   }
 }
-
+.listings_index {
+  .listing {
+    display: inline-block;
+    width: 25%;
+    margin-left: 20px;
+  }
+}
 .container {
   position: relative;
-  margin: 0;
+  margin-top: 52px;
 }
-html {
-  background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+.homepage_container {
+  height: 100%;
+  width: 100%;
 }
 .book,
 .list {
@@ -37,10 +66,24 @@ html {
     width: 100px;
     color: white;
     text-decoration: none;
+    background-color: transparent;
+    transition: all 0.25s ease 0s;
     font: {
       weight: bold;
       size: 18px;
     }
+    &:hover {
+      border: 3px solid black;
+      background-color: rgba(0, 0, 0, 0.95);
+      color: white;
+    }
+    // &:active {
+    //   border-top: 3px solid rgb(255, 0, 138);
+    //   border-right: 3px solid rgb(255, 0, 138);
+    //   color: rgb(255, 0, 138);
+    //   border-bottom: 3px solid white;
+    //   border-left: 3px solid white;
+    // }
   }
 }
 
@@ -56,20 +99,29 @@ html {
   left: 55%;
 }
 
-.topnav.links {
+.topnav.div {
   position: fixed;
   top: 0;
   right: 0;
-  li {
-    display: inline-block;
-    list-style-type: none;
-    a {
-      text-decoration: none;
+  .topnav.links {
+    color: white;
+    span {
       color: white;
-      padding: 1em;
-      font: {
-        weight: bold;
-        size: 17px;
+    }
+    li {
+      display: inline-block;
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: white;
+        padding: 1em;
+        font: {
+          weight: bold;
+          size: 17px;
+        }
+        &:active {
+          color: white;
+        }
       }
     }
   }
@@ -83,6 +135,7 @@ html {
   height: 100%;
   width: 100%;
   background-color: rgba(30,30,30,0.8);
+  z-index: 200;
 }
 
 .new_user > form,

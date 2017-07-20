@@ -14,27 +14,28 @@
       }
     </style>
   </head>
-
-  <body>
-    <header>
-      <h1><%= link_to "PARK♛KING", root_url %></h1>
-      <nav class="topnav">
-        <ul class="topnav links">
-          <% if current_user %>
-            <span><b>Aloha <%= current_user.first_name %>!</b></span>
-            <li><%= link_to "My Profile", user_path(current_user.id) %></li>
-            <li><%= link_to "Logout", sessions_path, method: :delete %></li>
-            <li><%= link_to 'Listings', listings_path %></li>
-          <% else %>
-            <li><a href="#" class="login_link">Login</a></li>
-            <li><a href="#" class="new_user_link">Register</a></li>
-          <% end %>
-          <li><%= link_to "About", "/about" %></li>
-        </ul>
-      </nav>
+  <body class="<%= params[:controller] %> <%= params[:action] %>">
+    <header class="header">
+        <h1><%= link_to "PARK♛KING", root_url %></h1>
+        <div class="topnav div">
+        <nav class="topnav">
+          <ul class="topnav links">
+            <% if current_user %>
+              <li id="profile_link" class="profile_link" ><%= link_to "Hi " + current_user.first_name + "!", user_path(current_user.id) %></li>
+              |
+              <li><%= link_to "Logout", sessions_path, method: :delete %></li>
+              <li><%= link_to 'Listings', listings_path %></li>
+            <% else %>
+              <li><a href="#" class="login_link">Login</a></li>
+              <li><a href="#" class="new_user_link">Register</a></li>
+            <% end %>
+            <li><%= link_to "About", "/about" %></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <div class="container">
+    <main class="container">
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>

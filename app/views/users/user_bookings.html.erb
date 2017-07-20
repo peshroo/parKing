@@ -1,12 +1,15 @@
-<h1>My Profile</h1>
-<div class="profile_user_info">
-  <h3><%= @user.full_name %></h3>
-  <p><%= @user.email %></p>
-  <p>Wallet: $0.00</p>
-</div>
-<%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
-<%= link_to "Delete Account", "/users/#{@user.id}", method: :delete %>
-<%= link_to "Booking History", show_user_bookings_path, class: 'show_bookings_link', remote: true %>
-<div class="user_partial">
- <%= render partial: 'bookings' %>
+<div class="user_profile">
+  <h1>My Profile</h1>
+  <%= link_to "Home", root_url %>
+  <div class="profile_user_info">
+    <h3><%= @user.full_name %></h3>
+    <p><%= @user.email %></p>
+    <p>Wallet: $0.00</p>
+  </div>
+  <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
+  <%= link_to "Delete this account", "/users/#{@user.id}", method: :delete %>
+  <%= link_to "Booking History", show_user_bookings_path, class: 'show_bookings_link', remote: true %>
+  <div class="user_partial">
+   <%= render partial: 'bookings' %>
+  </div>
 </div>
