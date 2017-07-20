@@ -5,5 +5,6 @@
   <p>$<%= booking.listing.price %></p>
   <p><%= booking.date %> at <%= booking.human_time %></p>
   <%= link_to 'Delete', listing_booking_path(booking.listing.id, booking.id), method: :delete, data: {confirm: "Are you sure you want to delete the booking '#{booking.id}'? This cannot be undone!"} %>
+  <%= link_to 'Review', review_form_path(listing_id: booking.listing.id), remote: true %>
 </div>
 <% end %>

@@ -5,6 +5,11 @@
 <h4>Price: $<%= @listing.price %>/hour</h4>
 <h4>Rating: <%= @listing.rating %></h4>
 <h4>Available Time: <%= @listing.start.strftime('%b %e, %l:%M %p') %> - <%= @listing.end.strftime('%b %e, %l:%M %p') %></h4>
+<h4>Rating: <%= @listing.reviews.average(:rating).to_i %></h4>
+<% @listing.reviews.each do |review| %>
+<h4>Review: <%= review.comment %></h4>
+<% end %>
+<h4>Available Time: <%= @listing.start.strftime('%b %e, %l:%M %p') %>-<%= @listing.end.strftime('%b %e, %l:%M %p') %></h4>
 
 <%= link_to 'Edit Listing', edit_listing_path(@listing) %>
 | <%= link_to 'Delete Listing', listing_path(@listing), method: :delete, data: {confirm: "Are you sure you want to delete the listing '#{@listing.name}'? This cannot be undone!"} %>
