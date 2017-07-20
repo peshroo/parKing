@@ -1,9 +1,8 @@
-<h3>♛ <%= @listing.name %> ♛</h3>
+<h3><%= @listing.name %></h3>
 <h4><%= image_tag(@listing.image) %></h4>
 <h4>Location: <%= @listing.location %></h4>
 <h4>Description: <%= @listing.description %></h4>
 <h4>Price: $<%= @listing.price %>/hour</h4>
-<h4>Rating: <%= @listing.rating %></h4>
 <h4>Available Time: <%= @listing.start.strftime('%b %e, %l:%M %p') %> - <%= @listing.end.strftime('%b %e, %l:%M %p') %></h4>
 <h4>Rating: <%= @listing.reviews.average(:rating).to_i %></h4>
 <% @listing.reviews.each do |review| %>
