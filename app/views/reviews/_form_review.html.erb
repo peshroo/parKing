@@ -1,0 +1,16 @@
+<%= form_for(@review) do |f| %>
+  <p>
+    <%= f.label :, 'Please Choose A Date' %><br>
+    <%= f.d :date, min: Date.today %>
+  </p>
+
+  <p>
+    <%= f.label :time, 'Please Choose A Time' %><br>
+    <%= f.time_field :time %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
