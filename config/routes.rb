@@ -3,8 +3,17 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'edit_user_form' => 'users#edit_user_form'
+  get 'listing_search_form' => 'listings#listing_search_form'
+  get 'listing_search' => 'listings#search'
+  get 'show_user_bookings' => 'users#show_bookings'
+  get 'user_bookings' => 'users#user_bookings'
 
   resources :home
   resources :users
   resource :sessions, only: [:new, :create, :destroy]
+
+  resources :listings do
+    resources :bookings
+  end
+
 end

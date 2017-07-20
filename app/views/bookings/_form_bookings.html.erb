@@ -1,0 +1,16 @@
+<%= form_for([@listing, @booking]) do |f| %>
+  <p>
+    <%= f.label :date, 'Please Choose A Date' %><br>
+    <%= f.date_field :date, min: Date.today %>
+  </p>
+
+  <p>
+    <%= f.label :time, 'Please Choose A Time' %><br>
+    <%= f.time_field :time %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

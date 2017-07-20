@@ -1,0 +1,9 @@
+<% @bookings.each do |booking| %>
+<div class="usersbookings">
+  <h3><%= link_to booking.listing.name, listing_path(booking.listing.id) %></h3>
+  <p><%= booking.listing.location %></p>
+  <p>$<%= booking.listing.price %></p>
+  <p><%= booking.date %> at <%= booking.human_time %></p>
+  <%= link_to 'Delete', listing_booking_path(booking.listing.id, booking.id), method: :delete, data: {confirm: "Are you sure you want to delete the booking '#{booking.id}'? This cannot be undone!"} %>
+</div>
+<% end %>
