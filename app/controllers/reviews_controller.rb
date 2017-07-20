@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     end
 
     def update
-      @review = Review.find(params[:id])
+      @review = Review.find(params[:review][:id])
       #
       if @review.update(review_params)
         redirect_to user_bookings_path
@@ -34,10 +34,10 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-      @review = Review.find(params[:id])
+      @review = Review.find(params[:review_id])
       @review.destroy
       flash[:alert] = "Review deleted!"
-      redirect_to
+      redirect_to user_bookings_path
     end
     def review_form
       respond_to do |format|
@@ -51,6 +51,6 @@ class ReviewsController < ApplicationController
     # end
 
     def review_params
-      params.require(:review).permit(:rating, :comment, :listing_id)
+      params.require(:review).permit(:rating, :comment, :listing_id, :user_id)
     end
   end

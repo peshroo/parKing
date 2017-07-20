@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'show_user_bookings' => 'users#show_bookings'
   get 'user_bookings' => 'users#user_bookings'
   get 'review_form' => 'users#review_form'
-
+  get 'edit_review_form' => 'users#edit_review_form'
   resource :reviews, only: [:new, :create, :update, :edit, :destroy]
   resources :home
   resources :users

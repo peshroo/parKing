@@ -78,6 +78,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_review_form
+    @review = Review.find(params[:review_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
     @user = User.find(session[:user_id])
     @user.destroy
