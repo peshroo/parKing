@@ -2,6 +2,11 @@ class ListingsController < ApplicationController
 
     def index
       @listings = Listing.all
+      @listings = if params[:term]
+        Listing.where('name LIKE ?', "%#{params[:term]}%")
+      else
+        Listing.all
+      end
     end
 
     def show
@@ -55,7 +60,7 @@ class ListingsController < ApplicationController
 
 private
     def listing_params
-      params.require(:listing).permit(:name, :location, :description, :price, :rating, :start, :end, :image)
+      params.require(:listing).permit(:name, :location, :description, :price, :rating, :start, :end, :image, :term)
     end
 
   end
