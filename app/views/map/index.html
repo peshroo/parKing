@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1.0">
+  <meta http=equiv="X-UA-Compatible" content="ie=edge">
+  <title>Map</title>
+  <style>
+    #map{
+      height: 1000px;
+      width: 100%;
+  }
+  </style>
+</head>
+<body>
+<h1>Map</h1>
+  <div id="map"></div>
+  <script>
+    function initMap(){
+    // Map options
+      var options = {
+        zoom: 8,
+        center:{lat:43.6532,lng:-79.3832}
+      }
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Add marker
+      var marker = new google.maps.Marker({
+      position:{lat:43.6532,lng:-79.3832}
+      map:map
+      icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+        content:'<h1>Greatest City In The World</h1>'
+      });
+
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker)
+      });
+
+      addMarker({coords:{lat:43.6472,lng:-79.3872}});
+      addMarker({coords:{lat:43.6426,lng:-79.3871}});
+      addMarker({coords:{lat:43.6452,lng:-79.3806}});
+      addMarker({coords:{lat:43.6560,lng:-79.3802}});
+
+      // Add marker function
+      function addmarker(coords){
+        var marker = new google.maps.Marker({
+        position:coords,
+        map:map,
+        icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
+  </script>
+</body>
+</html>
