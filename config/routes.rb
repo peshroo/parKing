@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   resources :listings do
     resources :bookings
   end
+
+  get "/:page" => "pages#show"
+
 end

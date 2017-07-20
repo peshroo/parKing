@@ -13,13 +13,13 @@ h1 {
   padding: 4px;
   a {
     text-decoration: none;
-    color: rgb(255, 0, 138);
+    color: white;
   }
 }
 
 h3, h4 {
   text-decoration: none;
-  color: rgb(255, 0, 138);
+  color: white;
 }
 
 .container {
@@ -27,7 +27,7 @@ h3, h4 {
   margin: 0;
 }
 html {
-  // background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
+  background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -70,7 +70,7 @@ html {
     list-style-type: none;
     a {
       text-decoration: none;
-      color: rgb(255, 0, 138);
+      color: white;
       padding: 1em;
       font: {
         weight: bold;
