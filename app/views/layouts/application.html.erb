@@ -23,7 +23,6 @@
           <% if current_user %>
             <span><b>Aloha <%= current_user.first_name %>!</b></span>
             <li><%= link_to "My Profile", user_path(current_user.id) %></li>
-            |
             <li><%= link_to "Logout", sessions_path, method: :delete %></li>
             <li><%= link_to 'Listings', listings_path %></li>
           <% else %>

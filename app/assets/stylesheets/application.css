@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ * {
+   text-decoration: none;
+   color: white;
+ }
+
+ .aboutcrown {
+   text-align: center;
+ }
