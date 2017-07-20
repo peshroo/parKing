@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>♛ parKing ♛</title>
+    <title>♛ P A R K i n g ♛</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: 'Contrail One', cursive;
+      }
+    </style>
   </head>
 
   <body>
     <header>
-      <h1><%= link_to "parKing", root_url %></h1>
+      <h1><%= link_to "♛ P A R K i n g ♛", root_url %></h1>
       <nav class="topnav">
         <ul class="topnav links">
           <% if current_user %>
