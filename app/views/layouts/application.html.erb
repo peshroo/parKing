@@ -9,27 +9,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 
-  <body>
-    <header>
-      <h1><%= link_to "parKing", root_url %></h1>
-      <nav class="topnav">
-        <ul class="topnav links">
-          <% if current_user %>
-            <span><b>Aloha <%= current_user.first_name %>!</b></span>
-            <li><%= link_to "My Profile", user_path(current_user.id) %></li>
-            |
-            <li><%= link_to "Logout", sessions_path, method: :delete %></li>
-            <li><%= link_to 'Listings', listings_path %></li>
-          <% else %>
-            <li><a href="#" class="login_link">Login</a></li>
-            <li><a href="#" class="new_user_link">Register</a></li>
-          <% end %>
-          <li><a href="#">About</a></li>
-        </ul>
-      </nav>
+  <body class="<%= params[:controller] %> <%= params[:action] %>">
+    <header class="header">
+        <h1><%= link_to "PARKING", root_url %></h1>
+        <div class="topnav div">
+        <nav class="topnav">
+          <ul class="topnav links">
+            <% if current_user %>
+              <span><b>Aloha <%= current_user.first_name %>!</b></span>
+              <li id="profile_link" class="profile_link" ><%= link_to "My Profile", user_path(current_user.id) %></li>
+              |
+              <li><%= link_to "Logout", sessions_path, method: :delete %></li>
+              <li><%= link_to 'Listings', listings_path %></li>
+            <% else %>
+              <li><a href="#" class="login_link">Login</a></li>
+              <li><a href="#" class="new_user_link">Register</a></li>
+            <% end %>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <div class="container">
+    <main class="container">
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>
