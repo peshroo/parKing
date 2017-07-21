@@ -5,7 +5,8 @@ class Listing < ApplicationRecord
 
   # belongs_to  :user
   has_many    :bookings
-  has_many    :ratings
+
+  has_many    :reviews
 
   def to_hours
     "#{start.hour}:00"

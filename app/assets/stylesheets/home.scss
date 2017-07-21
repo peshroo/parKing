@@ -5,23 +5,95 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
+.home.index {
+  background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+header {
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 26px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  h1 {
+    height: 100%;
+    line-height: 50px;
+    font: {
+      size: 21px;
+      weight: bold;
+    }
+    // background-image: url('crown-512-pink.png');
+    background-size: 17px;
+    background-repeat: no-repeat;
+    background-position: 42px 0px;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+.listings_index {
+  .listing {
+    display: inline-block;
+    width: 25%;
+    margin-left: 20px;
+  }
+}
 .container {
   position: relative;
-  margin: 0;
+  margin-top: 52px;
 }
+.homepage_container {
+  height: 100%;
+  width: 100%;
+}
+// .search_listing {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   form {
+//     position: absolute;
+//     top: 20em;
+//     left: 42%;
+//   }
+// }
 .book,
-.rent {
+.list {
   text-align: center;
   a {
-    border: 3px inset rgb(1, 40, 85);
+    border: 3px solid white;
     padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     width: 100px;
-    border-radius: 10%;
+    color: white;
     text-decoration: none;
+    background-color: transparent;
+    transition: all 0.25s ease 0s;
     font: {
       weight: bold;
       size: 18px;
     }
+    &:hover {
+      border: 3px solid black;
+      background-color: white;
+      color: black;
+    }
+    // &:active {
+    //   border-top: 3px solid rgb(255, 0, 138);
+    //   border-right: 3px solid rgb(255, 0, 138);
+    //   color: rgb(255, 0, 138);
+    //   border-bottom: 3px solid white;
+    //   border-left: 3px solid white;
+    // }
   }
 }
 
@@ -31,26 +103,35 @@ body {
   left: 35%;
 }
 
-.rent a {
+.list a {
   position: absolute;
   top: 250px;
   left: 55%;
 }
 
-.topnav.links {
+.topnav.div {
   position: fixed;
   top: 0;
   right: 0;
-  li {
-    display: inline-block;
-    list-style-type: none;
-    a {
-      text-decoration: none;
-      color: black;
-      padding: 1em;
-      font: {
-        weight: bold;
-        size: 20px;
+  .topnav.links {
+    color: white;
+    span {
+      color: white;
+    }
+    li {
+      display: inline-block;
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: white;
+        padding: 1em;
+        font: {
+          weight: bold;
+          size: 17px;
+        }
+        &:active {
+          color: white;
+        }
       }
     }
   }
@@ -64,6 +145,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgba(30,30,30,0.8);
+  z-index: 200;
 }
 
 .new_user > form,

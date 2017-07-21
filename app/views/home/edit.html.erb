@@ -1,0 +1,44 @@
+<h1>Update your profile</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h3>There are <%= @user.errors.count %> issues, please try again:</h3>
+    <ol>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ol>
+  </div>
+<% end %>
+<div class="edit_user">
+  <%= form_for @user  do |f| %>
+    <button type="button" class="close">x</button>
+    <div class="field">
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :email %><br>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <%= f.submit 'Update' %>
+
+  <% end %>
+</div>
