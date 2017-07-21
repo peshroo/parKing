@@ -2,17 +2,19 @@
 <html>
   <head>
     <title>PARK♛KING</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
+    </script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-      body {
-        font-family: 'Contrail One', cursive;
-      }
-    </style>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
+    </script>
   </head>
   <body class="<%= params[:controller] %> <%= params[:action] %>">
     <header class="header">
