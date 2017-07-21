@@ -25,6 +25,7 @@ locations = %w(Dundas Yonge Bloor Queen College King Bathurst Spadina Simcoe)
   location: locations.sample,
   description: Faker::Lorem.paragraph,
   price: rand(10),
+  image: "http://lorempixel.com/250/150/nightlife/#{rand(10)}/",
   start: Time.now + rand(10000),
 end: Time.now + rand(10000)
 )
