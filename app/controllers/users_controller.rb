@@ -54,7 +54,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit_user_form
     respond_to do |format|
       format.js
@@ -68,6 +67,19 @@ class UsersController < ApplicationController
 
   def show_bookings
     @bookings = @user.bookings
+    respond_to do |format|
+      format.js
+    end
+  end
+  def review_form
+    @review = Review.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_review_form
+    @review = Review.find(params[:review_id])
     respond_to do |format|
       format.js
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717163522) do
+ActiveRecord::Schema.define(version: 20170720224603) do
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20170717163522) do
     t.integer "user_id"
     t.integer "listing_id"
     t.date "date"
-    t.integer "time"
+    t.time "start_time"
+    t.time "end_time"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170717163522) do
     t.integer "rating"
     t.time "start"
     t.time "end"
+    t.string "image"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -38,14 +40,15 @@ ActiveRecord::Schema.define(version: 20170717163522) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "listing_id"
+    t.integer "user_id"
+    t.integer "rating"
+    t.text "comment"
+    t.index ["listing_id"], name: "index_reviews_on_listing_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

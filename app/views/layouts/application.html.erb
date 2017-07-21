@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>parKing</title>
+    <title>PARK♛KING</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
@@ -14,28 +16,27 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
     </script>
   </head>
-
-  <body>
-    <header>
-      <h1><%= link_to "parKing", root_url %></h1>
-      <nav class="topnav">
-        <ul class="topnav links">
-          <% if current_user %>
-            <span><b>Aloha <%= current_user.first_name %>!</b></span>
-            <li><%= link_to "My Profile", user_path(current_user.id) %></li>
-            |
-            <li><%= link_to "Logout", sessions_path, method: :delete %></li>
-            <li><%= link_to 'Listings', listings_path %></li>
-          <% else %>
-            <li><a href="#" class="login_link">Login</a></li>
-            <li><a href="#" class="new_user_link">Register</a></li>
-          <% end %>
-          <li><a href="#">About</a></li>
-        </ul>
-      </nav>
+  <body class="<%= params[:controller] %> <%= params[:action] %>">
+    <header class="header">
+        <h1><%= link_to "PARK♛KING", root_url %></h1>
+        <div class="topnav div">
+        <nav class="topnav">
+          <ul class="topnav links">
+            <% if current_user %>
+              <li id="profile_link" class="profile_link" ><%= link_to "Hi " + current_user.first_name + "!", user_path(current_user.id) %></li>
+              <li><%= link_to "Logout", sessions_path, method: :delete %></li>
+              <li><%= link_to 'Listings', listings_path %></li>
+            <% else %>
+              <li><a href="#" class="login_link">Login</a></li>
+              <li><a href="#" class="new_user_link">Register</a></li>
+            <% end %>
+            <li><%= link_to "About", "/about" %></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <div class="container">
+    <main class="container">
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>
