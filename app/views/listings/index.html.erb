@@ -8,9 +8,9 @@
         <p><img src=<%= listing.image %>></p>
         Location: <%= listing.location %><br>
         Description: <%= listing.description %><br>
-        Price: $<%= listing.price %>/hour<br>
-        Rating: <%= listing.rating %><br>
-        Available Time: <%= listing.start.strftime('%b %e, %l:%M %p') %>-<%= listing.end.strftime('%b %e, %l:%M %p') %>
+        Price: $<%= listing.price %><br>
+        Rating: <%= listing.reviews.average(:rating).to_i %><br>
+        Available Time: <%= listing.start.strftime('%b %e, %l:%M %p') %> - <%= listing.end.strftime('%b %e, %l:%M %p') %>
       </div>
     <% end %>
   </div>

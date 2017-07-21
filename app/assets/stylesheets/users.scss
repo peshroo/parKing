@@ -1,9 +1,14 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.usersbookings {
-  display: inline-block;
-  width: 16%;
+.user_partial {
+  width: 100%;
+  margin-left: 2em;
+  .usersbookings {
+    display: inline-block;
+    width: 25%;
+    margin: 2em;
+  }
 }
 .users.show {
   background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
