@@ -6,11 +6,24 @@
   <meta http=equiv="X-UA-Compatible" content="ie=edge">
   <title>Map</title>
   <style>
-    #map{
+    /*Old style for map*/
+    /*#map{
       height: 500px;
       width: 100%;
       background-color: grey;
-  }
+  }*/
+  /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+     #map {
+       height: 75%;
+     }
+     /* Optional: Makes the sample page fill the window. */
+     html, body {
+       height: 100%;
+       margin: 0;
+       padding: 0;
+     }
+
   </style>
 </head>
 <body>
@@ -51,6 +64,38 @@
       //   infoWindow.open(map, marker)
       // });
 
+      infoWindow = new google.maps.InfoWindow;
+
+      // // Try HTML5 geolocation.
+      //   if (navigator.geolocation) {
+      //     navigator.geolocation.getCurrentPosition(function(position) {
+      //       var pos = {
+      //         lat: position.coords.latitude,
+      //         lng: position.coords.longitude
+      //       };
+      //
+      //       infoWindow.setPosition(pos);
+      //       infoWindow.setContent('Location found.');
+      //       infoWindow.open(map);
+      //       map.setCenter(pos);
+      //     }, function() {
+      //       handleLocationError(true, infoWindow, map.getCenter());
+      //     });
+      //   } else {
+      //     // Browser doesn't support Geolocation
+      //     handleLocationError(false, infoWindow, map.getCenter());
+      //   }
+      // }
+      //
+      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      //   infoWindow.setPosition(pos);
+      //   infoWindow.setContent(browserHasGeolocation ?
+      //                         'Error: The Geolocation service failed.' :
+      //                         'Error: Your browser doesn\'t support geolocation.');
+      //   infoWindow.open(map);
+      //
+
+
       // Array of markers
       var markers = [
         {
@@ -78,12 +123,11 @@
         addMarker(markers[i]);
       };
 
-
       // Add marker function
       function addMarker(props){
         var marker = new google.maps.Marker({
         position:props.coords,
-        icon: 'http://127.0.0.1:3000/app/views/map/crown.png',
+        icon: 'http://127.0.0.1:3000/app/views/map/crown4.png',
         map:map,
         // icon:props.iconImage
       });
@@ -110,5 +154,6 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
   </script>
+
 </body>
 </html>
