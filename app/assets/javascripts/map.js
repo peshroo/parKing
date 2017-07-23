@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function(){
         '<p><img src="' + result.image + '" alt="Listing Image"></p>' +
         '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
         '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
-        '<a href="localhost:3000/listings/' + result.id + '/bookings/new">Book Now </a>' + '</p>' +
+        '<a href="http://localhost:3000/listings/' + result.id + '/bookings/new">Book Now </a>' + '</p>' +
         '</div>';
         console.log(content);
         var infowindow = new google.maps.InfoWindow({
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 infowindow.open(map, marker);
               });
             } else {
-              alert('Geocode was not successful for the following reason: ' + status);
+              console.log('Geocode was not successful for the following reason: ' + status);
             }
             console.log(results)
           })
