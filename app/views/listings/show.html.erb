@@ -3,7 +3,7 @@
 <h4>Location: <%= @listing.location %></h4>
 <h4>Description: <%= @listing.description %></h4>
 <h4>Price: $<%= @listing.price %>/hour</h4>
-<h4>Available Time: <%= @listing.start.strftime('%b %e, %l:%M %p') %> - <%= @listing.end.strftime('%b %e, %l:%M %p') %></h4>
+<h4>Available Time: <%= @listing.human_time_start %> - <%= @listing.human_time_end %></h4>
 <h4>Rating: <%= @listing.reviews.average(:rating).to_i %></h4>
 <% @listing.reviews.each do |review| %>
 <h4>Review: <%= review.comment %></h4>

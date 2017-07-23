@@ -1,7 +1,7 @@
 <%= form_tag listing_search_path, method: :get do %>
 
-  <%= select_tag "name", options_for_select([["Macbook", "Macbook"], ["Windows", "Windows"], ["Dundas", "Dundas"]]), prompt: "Where" %>
-  <%= select_hour 13, ampm: true %>
+  <%= text_field_tag :term %>
+  <%= select_hour Time.now.hour, ampm: true %>
   <%= submit_tag "Search" %>
 
 <% end %>

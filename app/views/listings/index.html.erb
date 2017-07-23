@@ -10,7 +10,7 @@
         Description: <%= listing.description %><br>
         Price: $<%= listing.price %><br>
         Rating: <%= listing.reviews.average(:rating).to_i %><br>
-        Available Time: <%= listing.start.strftime('%b %e, %l:%M %p') %> - <%= listing.end.strftime('%b %e, %l:%M %p') %>
+        Available Time: <%= listing.human_time_start %> - <%= listing.human_time_end %>
       </div>
     <% end %>
   </div>

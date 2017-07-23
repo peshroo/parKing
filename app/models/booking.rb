@@ -6,6 +6,10 @@ class Booking < ApplicationRecord
   # validate :booking_date_not_in_past
   # validate :booking_time_is_during_open_hours
 
+  before_create do
+   self.date = Date.today unless self.date
+ end
+
   def booking_time_is_during_open_hours
     if time.present? && time >= self.listing.start && time <= self.listing.end
     else
@@ -21,14 +25,14 @@ class Booking < ApplicationRecord
   end
 
   def human_time
-    if  start_time.hour == 12
-      return "#{start_time.hour} PM"
-    elsif start_time.hour == 0
+    if  start_time == 12
+      return "#{start_time} PM"
+    elsif start_time == 0
       return "12 AM"
-    elsif start_time.hour < 12
-      return "#{start_time.hour} AM"
+    elsif start_time < 12
+      return "#{start_time} AM"
     else
-      return "#{start_time.hour - 12} PM"
+      return "#{start_time - 12} PM"
     end
   end
 

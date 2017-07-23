@@ -18,30 +18,45 @@ end
 
 locations = %w(Dundas Yonge Bloor Queen College King Bathurst Spadina Simcoe)
 
-10.times do
-
+30.times do
+  listing_location = locations.sample
   listing = Listing.create!(
-  name: Faker::App.name,
-  location: locations.sample,
-  description: Faker::Lorem.paragraph,
-  price: rand(10),
-  image: "http://lorempixel.com/250/150/nightlife/#{rand(10)}/",
-  start: Time.now + rand(10000),
-end: Time.now + rand(10000)
-)
-puts "location #{listing.name}, #{listing.location} created"
-
-5.times do
-  booking = listing.bookings.create!(
-  user_id:  User.all.sample.id,
-  listing_id: Listing.all.sample.id ,
-  date: Time.now + rand(10000000),
-  start_time: Time.now + rand(10000000),
-  end_time: Time.now + rand(10000000)
+    name: Faker::App.name,
+    address: "#{rand(1..100)} #{listing_location} Toronto, ON",
+    location: listing_location,
+    description: Faker::Lorem.paragraph,
+    user_id: User.all.sample.id,
+    price: rand(1.5..2.5),
+    image: "http://lorempixel.com/250/150/nightlife/#{rand(10)}/",
+    start: rand(24),
+    end: rand(24)
   )
+  puts "location #{listing.name}, #{listing.location} created"
 
+  3.times do
+    a_listing = Listing.all.sample
+    a_user = User.where('id != ?', a_listing.user_id)
+    booking = listing.bookings.create!(
+    user_id:  User.all.sample.id,
+    listing_id:  a_listing.id,
+    date: Date.today + rand(-8..0).days,
+    start_time: rand(24),
+    end_time: rand(24)
+  )
   puts "bookings starts at #{booking.start_time}, booking ends at #{booking.end_time}."
-end
+  end
+
+  1.times do
+    a_listing = Listing.all.sample
+    a_user = User.where('id != ?', a_listing.user_id)
+    booking = listing.bookings.create!(
+    user_id:  User.all.sample.id,
+    listing_id:  a_listing.id,
+    start_time: rand(24),
+    end_time: rand(24)
+    )
+  end
+
 end
 
 

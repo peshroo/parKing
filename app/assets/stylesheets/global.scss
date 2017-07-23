@@ -7,3 +7,22 @@ html, body {
   margin: 0;
   padding: 0;
 }
+#content {
+  p,
+  h1 {
+    color: black;
+  }
+  a {
+    margin-left: 6em;
+    text-decoration: none;
+    color: deeppink;
+    font-weight: 500;
+    border: 1px solid #3A3A3B;
+    padding: 3px;
+    border-radius: 5%;
+    transition: all 0.25s ease 0s;
+    &:hover {
+      background-color: #3A3A3B;
+    }
+  }
+}
