@@ -23,6 +23,7 @@
         <nav class="topnav">
           <ul class="topnav links">
             <% if current_user %>
+              <li><%= image_tag current_user.avatar.url(:thumb) %></li>
               <li id="profile_link" class="profile_link" ><%= link_to "Hi " + current_user.first_name + "!", user_path(current_user.id) %></li>
               <li><%= link_to "Logout", sessions_path, method: :delete %></li>
               <li><%= link_to 'Listings', listings_path %></li>

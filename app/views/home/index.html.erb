@@ -9,8 +9,14 @@
   </div>
 
   <div class="new_user">
-    <%= form_for @user do |f| %>
+    <%= form_for @user, html: { multipart: true } do |f| %>
       <button type="button" class="close">x</button>
+
+      <div class='field'>
+        <%= f.label :avatar %><br>
+        <%= f.file_field :avatar %>
+      </div>
+
       <div class="field">
         <%= f.label :first_name %><br>
         <%= f.text_field :first_name %>

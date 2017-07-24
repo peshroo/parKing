@@ -1,5 +1,6 @@
 <h1>My Profile</h1>
 <div class="profile_user_info">
+  <%= image_tag @user.avatar.url(:medium) %>
   <h3><%= @user.full_name %></h3>
   <p>Email: <%= @user.email %></p>
   <p>Wallet: $0.00</p>
