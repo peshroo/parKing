@@ -1,12 +1,19 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.usersbookings {
-  display: inline-block;
-  width: 16%;
+.user_partial {
+  width: 100%;
+  margin-left: 2em;
+  .usersbookings {
+    display: inline-block;
+    width: 25%;
+    margin: 2em;
+  }
 }
 .users.show {
-  background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
+  // background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  background-color: rgb(37, 37, 37);
 }

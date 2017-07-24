@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
 
     def show
       @listing = Listing.find(params[:id])
+      # Listing.all.sample.bookings.where('date = ?', Date.today)
     end
 
     def new
@@ -54,10 +55,16 @@ class ListingsController < ApplicationController
     end
 
     def search
-      @listings = Listing.where('name LIKE ?', "%#{params[:name]}%").select { |t| t.start.hour < params[:date][:hour].to_i && t.end.hour > params[:date][:hour].to_i}
-      # @listings = Listing.where('name LIKE ? AND start <= ? AND end >= ?', "%#{params[:name]}%", params[:time], params[:time])
+      @listings = Listing.where('location LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
     end
-
+    def markers
+      respond_to do |format|
+        format.json do
+        @listings = Listing.all
+        render json: @listings, include: :user
+        end
+      end
+    end
 private
     def listing_params
       params.require(:listing).permit(:name, :location, :description, :price, :rating, :start, :end, :image, :term)

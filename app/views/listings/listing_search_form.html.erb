@@ -1,8 +1,4 @@
-<%= render 'search_form' %>
-<!-- <%= select_tag "time", options_for_select([["1:00 AM", 1], ["2:00 AM", 2], ["3:00 AM", 3], ["4:00 AM", 4], ["5:00 AM", 5], ["6:00 AM", 6], ["7:00 AM", 7], ["8:00 AM", 8], ["9:00 AM", 9], ["10:00 AM", 10], ["11:00 AM", 11], ["12:00 PM", 12], ["1:00 PM", 13], ["2:00 PM", 14], ["3:00 PM", 15], ["4:00 PM", 16], ["5:00 PM", 17], ["6:00 PM", 18], ["7:00 PM", 19], ["8:00 PM", 20], ["9:00 PM", 21], ["10:00 PM", 22], ["11:00 PM", 23], ["12:00 AM", 24]]), prompt: "When" %> -->
 <div class="search_listing">
-  <%= form_tag(listings_path, method: :get) do %>
-    <%= text_field_tag :term, params[:term] %>
-    <%= submit_tag 'Search', name: nil %>
-  <% end %>
+  <%= render 'search_form' %>
 </div>
+<!-- <%= select_tag "time", options_for_select([["1:00 AM", 1], ["2:00 AM", 2], ["3:00 AM", 3], ["4:00 AM", 4], ["5:00 AM", 5], ["6:00 AM", 6], ["7:00 AM", 7], ["8:00 AM", 8], ["9:00 AM", 9], ["10:00 AM", 10], ["11:00 AM", 11], ["12:00 PM", 12], ["1:00 PM", 13], ["2:00 PM", 14], ["3:00 PM", 15], ["4:00 PM", 16], ["5:00 PM", 17], ["6:00 PM", 18], ["7:00 PM", 19], ["8:00 PM", 20], ["9:00 PM", 21], ["10:00 PM", 22], ["11:00 PM", 23], ["12:00 AM", 24]]), prompt: "When" %> -->
