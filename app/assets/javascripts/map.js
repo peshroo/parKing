@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
 
+  var token = $('meta[name=csrf-token]').attr('content');
+  $.ajaxSetup({
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-TOKEN', token);
+    }
+});
   // function initMap(){
   window.initMap = function() {
   // Map options
@@ -10,7 +16,71 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // New map
     var map = new google.maps.Map(document.getElementById('map'), options);
+    var infoWindow = new google.maps.InfoWindow;
+    var geocoder= new google.maps.Geocoder();
 
+    function human_time(hours) {
+      var suffix = hours >= 12 ? "PM":"AM";
+      var time = ((hours + 11) % 12 + 1) + suffix;
+      // console.log("inside human_time" + time)
+      return time
+    }
+
+    $.ajax({
+      url: 'http://localhost:3000/listing_markers',
+      method: 'GET',
+      dataType: 'json',
+    }).done(function(results) {
+      // var half = results.splice(5)
+      console.log(results.filter(function(item) {return item.latitude === null}))
+      results.filter(function(item) {return item.latitude === null}).forEach(function(result) {
+        var content = '<div id="content">' +
+          '<h2 class="listing_heading">' + result.name + '</h2>' +
+          '<div class="content_body"><p><b>' + result.address + '</b></p>' +
+          '<p><img src="' + result.image + '" alt="Listing Image"></p>' +
+          '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
+          '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
+          '<a href="http://localhost:3000/listings/' + result.id + '/bookings/new">Book Now </a>' + '</p>' +
+          '</div>';
+        // console.log(content);
+        var infowindow = new google.maps.InfoWindow({
+          content: content
+        });
+        geocoder.geocode({'address': result.address}, function(results, status) {
+          if (status == 'OK') {
+            console.log(results[0].geometry.location)
+            $.ajax({
+              url: "http://localhost:3000/listings/" + result.id,
+              method: "PATCH",
+              data: {
+                no_turbolink: true,
+                remote: true,
+                listing: {
+                  latitude: results[0].geometry.location.lat(),
+                  longitude: results[0].geometry.location.lng()
+                }
+              }
+            }).done(function(couch) {
+              console.log("george is done" + couch)
+            })
+            // result.latitude = results[0].geometry.location.lat();
+            // result.longitude = results[0].geometry.location.lng();
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+          } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+          }
+        })
+      })
+    })
+  }
+});
     // var script = document.createElement('script');
     // // This example uses a local copy of the GeoJSON stored at
     // // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
@@ -39,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function(){
     //   infoWindow.open(map, marker)
     // });
 
-    var infoWindow = new google.maps.InfoWindow;
 
     // // Try HTML5 geolocation.
     //   if (navigator.geolocation) {
@@ -92,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function(){
     // ];
     //
     // Loop through markers.
-    var geocoder= new google.maps.Geocoder();
     // geocoder.geocode({'address': '422 Bathurst St, Toronto, ON, Canada'}, function(results, status) {
     //   map.setCenter(results[0].geometry.location);
     //   var marker = new google.maps.Marker({
@@ -101,50 +169,6 @@ document.addEventListener("DOMContentLoaded", function(){
     //   });
     //   console.log(results)
     // })
-
-    function human_time(hours) {
-      var suffix = hours >= 12 ? "PM":"AM";
-      var time = ((hours + 11) % 12 + 1) + suffix;
-      console.log("inside human_time" + time)
-      return time
-    }
-
-    $.ajax({
-      url: 'http://localhost:3000/listing_markers',
-      method: 'GET',
-      dataType: 'json',
-    }).done(function(results) {
-      results.forEach(function(result) {
-        var content = '<div id="content">' +
-        '<h2 class="listing_heading">' + result.name + '</h2>' +
-        '<div class="content_body"><p><b>' + result.address + '</b></p>' +
-        '<p><img src="' + result.image + '" alt="Listing Image"></p>' +
-        '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
-        '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
-        '<a href="http://localhost:3000/listings/' + result.id + '/bookings/new">Book Now </a>' + '</p>' +
-        '</div>';
-        console.log(content);
-        var infowindow = new google.maps.InfoWindow({
-          content: content
-        });
-          geocoder.geocode({'address': result.address}, function(results, status) {
-            if (status == 'OK') {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-              });
-              marker.addListener('click', function() {
-                infowindow.open(map, marker);
-              });
-            } else {
-              console.log('Geocode was not successful for the following reason: ' + status);
-            }
-            console.log(results)
-          })
-
-      })
-    })
     //
     // window.eqfeed_callback = function(results) {
     //        for (var i = 0; i < results.length; i++) {
@@ -172,6 +196,3 @@ document.addEventListener("DOMContentLoaded", function(){
     //     infoWindow.open(map, marker)
     //   });
     // }
-  }
-
-});

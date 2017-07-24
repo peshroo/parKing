@@ -35,6 +35,8 @@ class ListingsController < ApplicationController
     end
 
     def update
+      # if request.xhr?
+
       @listing = Listing.find(params[:id])
       if @listing.update(listing_params)
         flash[:notice] = "Your listing has been successfully updated!"
@@ -67,7 +69,7 @@ class ListingsController < ApplicationController
     end
 private
     def listing_params
-      params.require(:listing).permit(:name, :location, :description, :price, :rating, :start, :end, :image, :term)
+      params.require(:listing).permit(:name, :location, :description, :price, :rating, :start, :end, :image, :term, :latitude, :longitude)
     end
 
   end
