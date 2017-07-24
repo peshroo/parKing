@@ -1,5 +1,5 @@
 <h3><%= @listing.name %></h3>
-<p><img src=<%= @listing.image %>></p>
+<%= image_tag @listing.image.url(:medium) %>
 <h4>Location: <%= @listing.location %></h4>
 <h4>Description: <%= @listing.description %></h4>
 <h4>Price: $<%= @listing.price %>/hour</h4>
