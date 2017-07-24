@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
     def index
       @listings = Listing.all
       @listings = if params[:term]
-        Listing.where('name LIKE ?', "%#{params[:term]}%")
+        Listing.where('location LIKE ?', "%#{params[:term]}%")
       else
         Listing.all
       end
