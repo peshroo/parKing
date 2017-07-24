@@ -40,21 +40,3 @@
 
     <% end %>
   </div>
-
-  <div class="login">
-  <%= form_for :sessions, url: sessions_path do |f| %>
-    <button type="button" class="close">x</button>
-    <div class='field'>
-      <%= f.label :email %><br>
-      <%= f.email_field :email %>
-    </div>
-
-    <div class='field'>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </div>
-
-    <%= f.submit 'Login' %>
-
-  <% end %>
-</div>

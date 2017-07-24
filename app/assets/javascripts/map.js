@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function(){
       dataType: 'json',
     }).done(function(results) {
       // var half = results.splice(5)
-      console.log(results.filter(function(item) {return item.latitude === null}))
-      results.filter(function(item) {return item.latitude === null}).forEach(function(result) {
+      // console.log(results.filter(function(item) {return item.latitude === null}))
+      results.forEach(function(result) {
         var content = '<div id="content">' +
           '<h2 class="listing_heading">' + result.name + '</h2>' +
           '<div class="content_body"><p><b>' + result.address + '</b></p>' +
@@ -46,40 +46,39 @@ document.addEventListener("DOMContentLoaded", function(){
         var infowindow = new google.maps.InfoWindow({
           content: content
         });
-        geocoder.geocode({'address': result.address}, function(results, status) {
-          if (status == 'OK') {
-            console.log(results[0].geometry.location)
-            $.ajax({
-              url: "http://localhost:3000/listings/" + result.id,
-              method: "PATCH",
-              data: {
-                no_turbolink: true,
-                remote: true,
-                listing: {
-                  latitude: results[0].geometry.location.lat(),
-                  longitude: results[0].geometry.location.lng()
-                }
-              }
-            }).done(function(couch) {
-              console.log("george is done" + couch)
-            })
+        // geocoder.geocode({'address': result.address}, function(results, status) {
+        //   if (status == 'OK') {
+        //     console.log(results[0].geometry.location)
+        //     $.ajax({
+        //       url: "http://localhost:3000/listings/" + result.id,
+        //       method: "PATCH",
+        //       data: {
+        //         no_turbolink: true,
+        //         remote: true,
+        //         listing: {
+        //           latitude: results[0].geometry.location.lat(),
+        //           longitude: results[0].geometry.location.lng()
+        //         }
+        //       }
+        //     }).done(function(couch) {
+        //       console.log("george is done" + couch)
+        //     })
             // result.latitude = results[0].geometry.location.lat();
             // result.longitude = results[0].geometry.location.lng();
-            map.setCenter(results[0].geometry.location);
+            // map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: { lat: result.latitude, lng: result.longitude }
             });
             marker.addListener('click', function() {
               infowindow.open(map, marker);
             });
-          } else {
-            console.log('Geocode was not successful for the following reason: ' + status);
-          }
+          // } else {
+          //   console.log('Geocode was not successful for the following reason: ' + status);
+          // }
         })
       })
-    })
-  }
+    }
 });
     // var script = document.createElement('script');
     // // This example uses a local copy of the GeoJSON stored at

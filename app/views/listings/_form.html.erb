@@ -11,6 +11,11 @@
     </ul>
   </div>
 <% end %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <p>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+  </p>
 
   <p>
     <%= f.label :name %>
@@ -18,8 +23,8 @@
   </p>
 
   <p>
-    <%= f.label :location %>
-    <%= f.text_field :location %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
   </p>
 
   <p>
