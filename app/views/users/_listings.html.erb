@@ -1,0 +1,22 @@
+<div class="userlistings_container">
+  <% @listings.each do |listing| %>
+    <div class="users listings">
+      <h3><%= link_to listing.name, listing_path(listing.id) %></h3>
+      <%= link_to 'Delete', listing_path(listing.id), method: :delete, data: {confirm: "Are you sure you want to delete this listing? This cannot be undone!"} %>
+      <p><%= listing.location %></p>
+      <p>$<%= listing.price %></p>
+      <p><%= listing.human_time_start %> to <%= listing.human_time_end %></p>
+      <%= link_to 'Edit', edit_listing_path(listing.id), remote: true %>
+
+      <label class="switch">
+        <%= hidden_field_tag :id, listing.id %>
+        <% if listing.status %>
+        <input type="checkbox" id="listing_status" class="toggler" name="listing[status]" value="listing_status" checked >
+        <% else %>
+        <input type="checkbox" id="listing_status" class="toggler" name="listing[status]" value="listing_status" >
+        <% end %>
+        <span class="slider round"></span>
+      </label>
+    </div>
+  <% end %>
+</div>

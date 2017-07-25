@@ -4,8 +4,9 @@
   <p>Email: <%= @user.email %></p>
   <p>Wallet: $0.00</p>
 </div>
-<%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
+<%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', id: "edit", :remote => true %>
 <%= link_to "Delete Account", "/users/#{@user.id}", method: :delete %>
+<%= link_to "My Listings", show_user_listings_path, class: 'show_listings_link', remote: true %>
 <%= link_to "Booking History", show_user_bookings_path, class: 'show_bookings_link', remote: true %>
 <div class="user_partial">
 
