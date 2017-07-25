@@ -1,7 +1,7 @@
 <div class="ui segment">
   <h3>Mailbox</h3>
 
-  <div class="ui list">
+  <div class="ui lister">
     <div class="item">
       <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
@@ -20,13 +20,13 @@
 
 <div class="ui segment">
   <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-      </div>
+  <div class="ui lister">
+    <ul>
+      <% @users.each do |user| %>
+        <div class="item">
+          <li><%= user.first_name %> <span class="massageme"><%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%></span></li>
+        </div>
       <% end %>
-    <% end %>
+    </ul>
   </div>
 </div>
