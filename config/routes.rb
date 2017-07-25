@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :listings do
     resources :bookings
   end
+  resources :conversations do
+    resources :messages
+  end
 
   get "/:page" => "pages#show"
 
