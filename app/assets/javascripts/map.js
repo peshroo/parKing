@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }).done(function(results) {
       // var half = results.splice(5)
       // console.log(results.filter(function(item) {return item.latitude === null}))
-      results.forEach(function(result) {
+      results.filter(function(item) {return item.status === true}).forEach(function(result) {
         var content = '<div id="content">' +
           '<h2 class="listing_heading">' + result.name + '</h2>' +
           '<div class="content_body"><p><b>' + result.address + '</b></p>' +

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @bookings = @user.bookings
+    @listings = @user.listings
   end
 
   def create
@@ -67,6 +68,18 @@ class UsersController < ApplicationController
 
   def show_bookings
     @bookings = @user.bookings
+    respond_to do |format|
+      format.js
+    end
+  end
+  def user_listings
+    @user = current_user
+    @listings = @user.listings
+  end
+
+  def show_listings
+    @user = current_user
+    @listings = @user.listings
     respond_to do |format|
       format.js
     end

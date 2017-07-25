@@ -4,10 +4,29 @@
 .user_partial {
   width: 100%;
   margin-left: 2em;
-  .usersbookings {
+  .users.bookings,
+  .users.listings {
     display: inline-block;
     width: 25%;
     margin: 2em;
+    background-color: rgb(26, 26, 26);
+  }
+}
+.users.listings.off {
+  background-color: grey;
+  a {
+    color: #6060ff;
+  }
+}
+.user_profile {
+  h1 {
+    color: black;
+  }
+  .profile_user_info {
+    h3,
+    p {
+    color: black;
+    }
   }
 }
 .users.show {
@@ -16,4 +35,51 @@
   // background-repeat: no-repeat;
   // background-size: cover;
   background-color: rgb(37, 37, 37);
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  input {
+    display: none;
+  }
+}
+
+
+input:checked + .slider {
+  background-color: #005496;
+  &:before {
+    transform: translateX(18px);
+  }
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #005496;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #9d9d9d;
+  transition: .4s;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+  }
+}
+.slider.round {
+  border-radius: 34px;
+  &:before {
+    border-radius: 50%;
+  }
 }
