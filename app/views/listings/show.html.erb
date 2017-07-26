@@ -1,6 +1,7 @@
 <h3><%= @listing.name %></h3>
-<%= image_tag @listing.image.url(:medium) %>
 <h4>Location: <%= @listing.location %></h4>
+<h4><%= image_tag @listing.user.avatar.url(:thumb) %> <%= @listing.user.first_name %> <span class="massageme"><%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: 'post'%></span></h4>
+<%= image_tag @listing.image.url(:medium) %>
 <h4>Description: <%= @listing.description %></h4>
 <h4>Price: $<%= @listing.price %>/hour</h4>
 <h4>Available Time: <%= @listing.human_time_start %> - <%= @listing.human_time_end %></h4>
