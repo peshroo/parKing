@@ -26,3 +26,36 @@ html, body {
     }
   }
 }
+.side-bar a:hover {
+  background: #98D09F none repeat scroll 0 0;
+}
+
+a:hover {
+  outline: 0;
+}
+a:hover {
+    color: #98D09F;
+    text-decoration: none;
+    transition: all 0.25s ease 0s;
+    -moz-transition: all 0.25s ease 0s;
+    -o-transition: all 0.25s ease 0s;
+}
+
+.side-bar a {
+background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+border-radius: 3px;
+color: #fff;
+display: block;
+height: 35px;
+line-height: 34px;
+text-align: center;
+width: 35px;
+}
+
+.side-bar a{
+font-size: 17px;
+position: fixed;
+right: 25px;
+top: 25px;
+z-index: 2001;
+}
