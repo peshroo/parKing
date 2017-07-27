@@ -27,14 +27,14 @@ html, body {
   }
 }
 .side-bar a:hover {
-  background: #98D09F none repeat scroll 0 0;
+  background: rgb(13,25,191) none repeat scroll 0 0;
 }
 
 a:hover {
   outline: 0;
 }
 a:hover {
-    color: #98D09F;
+    color: rgb(13,25,191);
     text-decoration: none;
     transition: all 0.25s ease 0s;
     -moz-transition: all 0.25s ease 0s;
@@ -42,20 +42,22 @@ a:hover {
 }
 
 .side-bar a {
-background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+background: white none repeat scroll 0 0;
 border-radius: 3px;
-color: #fff;
+color: black;
 display: block;
-height: 35px;
 line-height: 34px;
 text-align: center;
-width: 35px;
 }
 
 .side-bar a{
 font-size: 17px;
 position: fixed;
-right: 25px;
-top: 25px;
+right: 30px;
+top: 10px;
 z-index: 2001;
+}
+
+nav .topnav{
+  margin-right: 0px;
 }
