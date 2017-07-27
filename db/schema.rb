@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170725200802) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean "status", default: true
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 

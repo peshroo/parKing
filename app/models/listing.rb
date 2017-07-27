@@ -1,6 +1,6 @@
 class Listing < ApplicationRecord
 
-  validates :name, :location, :description, :price, presence: true
+  validates :name, :address, :description, :price, presence: true
   validates :start, :end, numericality: true
 
   belongs_to  :user

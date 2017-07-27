@@ -25,6 +25,7 @@
             <% if current_user %>
               <li><%= image_tag current_user.avatar.url(:thumb) %></li>
               <li id="profile_link" class="profile_link" ><%= link_to "Hi " + current_user.first_name + "!", user_path(current_user.id) %></li>
+              
               <li><%= link_to "Logout", sessions_path, method: :delete %></li>
               <li><%= link_to "Mailbox", conversations_path, class: "item" %></li>
               <li><%= link_to 'Listings', listings_path %></li>
@@ -39,6 +40,56 @@
     </header>
     <main class="container">
       <%= yield %>
+      <div class="login">
+        <%= form_for :sessions, url: sessions_path do |f| %>
+        <button type="button" class="close">x</button>
+        <div class='field'>
+          <%= f.label :email %><br>
+          <%= f.email_field :email %>
+        </div>
+
+        <div class='field'>
+          <%= f.label :password %><br>
+          <%= f.password_field :password %>
+        </div>
+
+        <%= f.submit 'Login' %>
+
+        <% end %>
+      </div>
+      <div class="new_user">
+        <%= form_for User.new do |f| %>
+          <button type="button" class="close">x</button>
+          <div class="field">
+            <%= f.label :first_name %><br>
+            <%= f.text_field :first_name %>
+          </div>
+
+          <div class="field">
+              <%= f.label :last_name %><br>
+              <%= f.text_field :last_name %>
+          </div>
+
+          <div class='field'>
+            <%= f.label :email %><br>
+            <%= f.email_field :email %>
+          </div>
+
+          <div class='field'>
+            <%= f.label :password %><br>
+            <%= f.password_field :password %>
+          </div>
+
+          <div class='field'>
+            <%= f.label :password_confirmation %><br>
+            <%= f.password_field :password_confirmation %>
+          </div>
+
+          <%= f.submit 'Sign Up' %>
+
+        <% end %>
+      </div>
     </main>
+
   </body>
 </html>

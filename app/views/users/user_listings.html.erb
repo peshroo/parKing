@@ -1,8 +1,7 @@
 <div class="user_profile">
   <div class="profile_user_info">
-    <%= image_tag user.avatar.url(:medium) %>
     <h3><%= current_user.full_name %></h3>
-    <p><%= current_user.email %></p>
+    <p id="edit"><%= current_user.email %></p>
     <p>Wallet: $0.00</p>
   </div>
   <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
@@ -10,7 +9,7 @@
   <%= link_to "My Listings", show_user_listings_path, class: 'show_listings_link', remote: true %>
   <%= link_to "Booking History", show_user_bookings_path, class: 'show_bookings_link', remote: true %>
   <div class="user_partial">
-   <%= render partial: 'bookings' %>
+   <%= render partial: 'listings' %>
   </div>
 </div>
 <div class="review_form">
