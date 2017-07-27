@@ -3,26 +3,37 @@
 <% end %>
 
 <div class="ui segment">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% sender = User.find(message.user_id) %>
-        <% if current_user.id == sender.id %>
-          <%= image_tag current_user.avatar.url(:thumb) %> <strong>You</strong> say (<%= message.message_time %>):<br>
-        <% else %>
-          <%= image_tag sender.avatar.url(:thumb) %><strong><%= sender.first_name %></strong> says (<%= message.message_time %>):<br>
-        <% end %>
-        <%= message.body %><br><br>
+  <% date = 0 %>
+    <% @messages.each do |message| %>
+      <% if date != message.created_at.to_date %>
+        <% date = message.created_at.to_date %>
+          <% if date == Date.today.to_date %>
+            <hr><strong>TODAY</strong><hr>
+          <% else %>
+            <hr><strong><%= message.created_at.to_date.strftime("%^b %-d, %Y") %></strong><hr>
+          <% end %>
+      <%end%>
+
+      <% if message.body %>
+        <% sender = User.find(message.user_id) %>
+          <% if current_user.id == sender.id %>
+            <%= image_tag current_user.avatar.url(:thumb) %> <strong>You</strong> at <%= message.message_time %>:<br>
+          <% else %>
+            <%= image_tag sender.avatar.url(:thumb) %><strong><%= sender.first_name %></strong> at <%= message.message_time %>:<br>
+          <% end %>
+          <%= message.body %><br><br>
+      <% end %>
+
     <% end %>
-  <% end %>
 </div>
 
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+<%= form_for [@conversation, @conversation.messages.new], html: {class: "ui reply form"} do |f| %>
   <div class="field">
     <%= f.text_area :body, class: "form-control" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div>
-    <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+    <%= f.submit "Send", class: "ui blue labeled submit icon button" %>
   </div>
 
 <% end %>

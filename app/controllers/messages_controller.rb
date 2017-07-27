@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  require 'date'
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
@@ -19,7 +20,7 @@ class MessagesController < ApplicationController
       end
     end
 
-    @message = @conversation.messages.new
+
   end
 
   def new
