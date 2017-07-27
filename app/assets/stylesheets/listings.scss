@@ -1,9 +1,84 @@
 // Place all the styles related to the listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.listings {
+.listings.index {
+  .listings_index {
+    .listing {
+      img {
+        height: 150px;
+        width: 250px;
+      }
+    }
+  }
   // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
   // background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
   // background-repeat: no-repeat;
   // background-size: cover;
+}
+.listings.show {
+  .show_listing_container {
+    margin-top: 5em;
+    border: 2px solid rgb(55, 0, 51);
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    .show_listing_navcontainer {
+      text-align: center;
+      padding: 2em 0 1em 0;
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        padding: 9px;
+        border: 1px solid rgb(55, 0, 51);
+        transition: all 0.5s;
+        &:visited,
+        &:link {
+          color: rgb(23, 23, 23);
+        }
+        &.listing_link_edit:hover {
+          background-color: rgb(36, 36, 36);
+          color: cyan;
+        }
+        &.listing_link_delete:hover {
+          background-color: rgb(36, 36, 36);
+          color: deeppink;
+        }
+        &.listing_link_book:hover {
+          background-color: rgb(36, 36, 36);
+          color: white;
+        }
+        &.listing_link_alll:hover {
+          background-color: rgb(36, 36, 36);
+          color: lawngreen;
+        }
+        &.listing_link_allb:hover {
+          background-color: rgb(36, 36, 36);
+          color: yellow;
+        }
+      }
+    }
+    .show_listing_body {
+      padding: 0px 2em 2em 2em;
+      .show_listing_body_info {
+        .show_listing_body_info_head,
+        .listing_image {
+          display: inline-block;
+        }
+        .show_listing_body_info_head {
+          width: 40%;
+          line-height: 35px;
+        }
+        h3 {
+          font: {
+            size: 35px;
+            weight: bold;
+          }
+        }
+        img {
+          height: 250px;
+          width: 420px;
+        }
+      }
+    }
+  }
 }

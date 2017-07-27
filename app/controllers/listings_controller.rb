@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
 
       if @listing.save
         flash[:notice] = "Your listing has been successfully created!"
-        redirect_to listings_path
+        render html: 'OK'
       else
         render new_listing_path
         # render :new
@@ -53,6 +53,7 @@ class ListingsController < ApplicationController
 
     def destroy
       @listing = Listing.find(params[:id])
+      @listing.bookings.destroy_all
       @listing.destroy
       flash[:notice] = "Your listing has been successfully DESTROYED!"
       redirect_to user_listings_path

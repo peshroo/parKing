@@ -100,6 +100,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(session[:user_id])
+    @user.listings.each do |listing|
+      listing.bookings.destroy_all
+      listing.destroy
+    end
     @user.destroy
     session[:user_id] = nil
     redirect_to root_url

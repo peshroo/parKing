@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
 });
   // function initMap(){
   window.initMap = function() {
+    if (document.getElementById('map')) {
+
   // Map options
     var options = {
       zoom: 13,
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
         var content = '<div id="content">' +
           '<h2 class="listing_heading">' + result.name + '</h2>' +
           '<div class="content_body"><p><b>' + result.address + '</b></p>' +
-          '<p><img src="' + result.image + '" alt="Listing Image"></p>' +
+          '<p><img src="' + result.image + '" alt="Listing Image" height="150" width="250"></p>' +
           '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
           '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
           '<a href="http://localhost:3000/listings/' + result.id + '/bookings/new">Book Now </a>' + '</p>' +
@@ -78,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function(){
           // }
         })
       })
+    }
     }
 });
     // var script = document.createElement('script');

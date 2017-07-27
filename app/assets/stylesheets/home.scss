@@ -5,6 +5,7 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
+
 .pages.show {
   p,
   h1,
@@ -24,6 +25,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 header {
   margin: 0;
   background-color: rgba(0, 0, 0, 0.9);
@@ -64,6 +66,9 @@ header {
 .container {
   position: relative;
   margin-top: 52px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .homepage_container {
@@ -88,7 +93,7 @@ header {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    width: 100px;
+    width: 150px;
     color: white;
     text-decoration: none;
     background-color: transparent;
@@ -98,7 +103,6 @@ header {
       size: 18px;
     }
     &:hover {
-      border: 3px solid black;
       background-color: white;
       color: black;
     }
@@ -114,13 +118,13 @@ header {
 
 .book a {
   position: absolute;
-  top: 250px;
-  left: 35%;
+  top: 300px;
+  left: 30%;
 }
 
 .list a {
   position: absolute;
-  top: 250px;
+  top: 300px;
   left: 55%;
 }
 
@@ -133,6 +137,25 @@ header {
     span {
       color: white;
     }
+    // .willhover {
+    //   &:hover + ul {
+    //     display: block;
+    //   }
+    // }
+    // .profile_link {
+    //   position: relative;
+    // }
+    // .profile_dashboard {
+    //   background-color: blue;
+    //   padding-left: 0;
+    //   position: absolute;
+    //   top: 36px;
+    //   left: 33px;
+    //   display: none;
+    //   li {
+    //     display: block;
+    //     }
+    //   }
     li {
       display: inline-block;
       list-style-type: none;
