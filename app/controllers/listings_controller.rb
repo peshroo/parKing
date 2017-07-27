@@ -1,11 +1,10 @@
 class ListingsController < ApplicationController
 
     def index
-      @listings = Listing.all
-      @listings = if params[:term]
-        Listing.where('name LIKE ?', "%#{params[:term]}%")
+      if params[:term]
+        @listings =  Listing.where('name LIKE ?', "%#{params[:term]}%")
       else
-        Listing.all
+        @listings =  Listing.all
       end
     end
 
