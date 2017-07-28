@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resources :bookings
     patch 'toggle'
   end
+  resources :conversations do
+    resources :messages
+  end
 
   get "/:page" => "pages#show"
 

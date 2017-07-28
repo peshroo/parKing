@@ -1,7 +1,8 @@
 <div class="user_profile">
   <div class="profile_user_info">
-    <h3><%= current_user.full_name %></h3>
-    <p><%= current_user.email %></p>
+    <%= image_tag @user.avatar.url(:medium) %>
+    <h3><%= @user.full_name %></h3>
+    <p><%= @user.email %></p>
     <p>Wallet: $0.00</p>
   </div>
   <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>

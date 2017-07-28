@@ -23,13 +23,13 @@
       <div class="show_listing_body_info_head">
         <div class="show_listing_book_form">
           <% if @listing.available_hours %>
-          Available from <%= @listing.available_hours %> | <%= render '/bookings/form_bookings' %>
+            Available from <%= @listing.available_hours %> | <%= render '/bookings/form_bookings' %>
           <% else %>
-          Unavailable for booking
+            Unavailable for booking
           <% end %>
         </div>
-
         <h3><%= @listing.name %></h3>
+        <p><%= image_tag @listing.user.avatar.url(:thumb) %> <%= @listing.user.first_name %> <span class="massageme"><%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: 'post'%></span></p>
         <h4>Location: <%= @listing.address %></h4>
         <h4>Price: $<%= @listing.price %>/hour</h4>
         <h4>Available Time: <%= @listing.human_time_start %> - <%= @listing.human_time_end %></h4>
