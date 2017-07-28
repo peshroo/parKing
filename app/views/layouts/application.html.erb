@@ -1,38 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PARK♛KING</title>
 
-    <%= csrf_meta_tags %>
+<head>
+  <title>PARK♛KING</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
-    </script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
-    </script>
-  </head>
-  <body class="<%= params[:controller] %> <%= params[:action] %>">
-    <header class="header">
-        <h1><%= link_to "PARK♛KING", root_url %></h1>
-        <div class="topnav div">
-        <nav class="topnav">
-          <ul class="topnav links">
-            <% if current_user %>
-              <li id="profile_link" class="profile_link" ><%= link_to "Hi " + current_user.first_name + "!", user_path(current_user.id) %></li>
-              
-              <li><%= link_to "Logout", sessions_path, method: :delete %></li>
-              <li><%= link_to 'Listings', listings_path %></li>
-            <% else %>
-              <li><a href="#" class="login_link">Login</a></li>
-              <li><a href="#" class="new_user_link">Register</a></li>
-            <% end %>
-            <li><%= link_to "About", "/about" %></li>
-          </ul>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
+</script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
+</script>
+</head>
+<body class="<%= params[:controller] %> <%= params[:action] %>">
+  <header class="header">
+    <h1><%= link_to "PARK♛KING", root_url %></h1>
+
+    <% if current_user %>
+    <%= link_to "Hi " + current_user.first_name + "!", user_path(current_user.id), id: 'profile-link' %>
+
+    <div class="topnav div">
+      <nav class="topnav">
+        <ul class="topnav links">
+          <li class="sub-menu-parent">
+            <div class="side-bar">
+              <a id="dashboard">
+                <%=fa_icon "navicon"%>
+              </a>
+            </div>
+
+
+            <ul class="sub-menu">
+
+              <li id= "drop"><%= link_to "Profile", user_path(current_user.id)%></li>
+              <li id= "drop"><%= link_to "Logout", sessions_path, method: :delete %></li>
+              <li id= "drop"><%= link_to 'Listings', user_listings_path %></li>
+              <li id= "drop"><%= link_to 'Bookings', user_bookings_path %></li>
+
+            </ul>
+          </li>
+
+
+          <% else %>
+          <div class="topnav div">
+            <nav class="topnav">
+              <ul class="topnav links">
+                <li class="sub-menu-parent">
+                  <div class="side-bar">
+                    <a id="dashboard">
+                      <%=fa_icon "navicon"%>
+                    </a>
+                  </div>
+
+
+                  <ul class="sub-menu">
+
+                    <li id= "drop"><a href="#" class="login_link">Login</a></li>
+                    <li id= "drop"><a href="#" class="new_user_link">Register</a></li>
+                    <li id= "drop"><%= link_to "About", "/about" %></li>
+
+                  </ul>
+                </li>
+          <% end %>
         </nav>
       </div>
     </header>
@@ -40,21 +74,23 @@
       <%= yield %>
       <div class="login">
         <%= form_for :sessions, url: sessions_path do |f| %>
-        <button type="button" class="close">x</button>
-        <div class='field'>
-          <%= f.label :email %><br>
-          <%= f.email_field :email %>
-        </div>
+          <button type="button" class="close">x</button>
+          <div class='field'>
+            <%= f.label :email %><br>
+            <%= f.email_field :email %>
+          </div>
 
-        <div class='field'>
-          <%= f.label :password %><br>
-          <%= f.password_field :password %>
-        </div>
-
-        <%= f.submit 'Login' %>
-
+          <div class='field'>
+            <%= f.label :password %><br>
+            <%= f.password_field :password %>
+          </div>
+          <div class="register_link">
+             <a href="#" class="new_user_link">Register</a>
+          </div>
+          <%= f.submit 'Login' %>
         <% end %>
       </div>
+      
       <div class="new_user">
         <%= form_for User.new do |f| %>
           <button type="button" class="close">x</button>
@@ -73,6 +109,7 @@
             <%= f.email_field :email %>
           </div>
 
+
           <div class='field'>
             <%= f.label :password %><br>
             <%= f.password_field :password %>
@@ -88,6 +125,5 @@
         <% end %>
       </div>
     </main>
-
   </body>
-</html>
+  </html>

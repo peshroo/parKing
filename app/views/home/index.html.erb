@@ -1,11 +1,20 @@
 <div class="homepage_container">
 
+
   <div class="book">
+    <% if current_user %>
     <%= link_to "Book", listing_search_form_path %>
+    <% else %>
+    <a href="#" class="login_link">Book</a>
+    <% end %>
   </div>
 
   <div class="list">
+    <% if current_user %>
     <%= link_to 'List', new_listing_path %>
+    <% else %>
+    <a href="#" class="login_link">List</a>
+    <% end %>
   </div>
 
-  
+
