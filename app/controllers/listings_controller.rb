@@ -62,7 +62,12 @@ class ListingsController < ApplicationController
     end
 
     def search
-      @listings = Listing.where(status: true).where('address LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
+      if current_user
+        @listings = Listing.where(status: true).where('address LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
+      else
+        flash[:notice] = "You must be logged in."
+        render '/'
+      end
     end
 
     def markers

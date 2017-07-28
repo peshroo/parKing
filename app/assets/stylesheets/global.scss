@@ -26,6 +26,9 @@ html, body {
     }
   }
 }
+.book p{
+  color: white;
+}
 .side-bar a:hover {
   background: rgb(13,25,191) none repeat scroll 0 0;
 }
@@ -33,7 +36,7 @@ html, body {
 a:hover {
   outline: 0;
 }
-a:hover {
+.side-bar a:hover {
     color: rgb(13,25,191);
     text-decoration: none;
     transition: all 0.25s ease 0s;
@@ -46,8 +49,9 @@ background: white none repeat scroll 0 0;
 border-radius: 3px;
 color: black;
 display: block;
-line-height: 34px;
+line-height: 5px;
 text-align: center;
+padding: 9px;
 }
 
 .side-bar a{
@@ -60,4 +64,57 @@ z-index: 2001;
 
 nav .topnav{
   margin-right: 0px;
+}
+
+.sub-menu-parent { position: relative; }
+
+.sub-menu {
+  visibility: hidden; /* hides sub-menu */
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-2em);
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+
+}
+
+.sub-menu-parent:hover .sub-menu {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+}
+
+.sub-menu li a:hover{color: red;}
+nav a{ display: block; padding: 0.5em 1em; text-decoration: none; }
+nav .topnav ul,
+nav .topnav ul li { list-style-type: none; padding: 0; margin: 0; }
+
+nav .topnav> ul { background: black; text-align: center;}
+nav .topnav > ul > li { display: inline-block; border-left: solid 1px #aaa; }
+nav .topnav> ul > li:first-child { border-left: none; }
+ .sub-menu a:hover{
+ color: blue;
+}
+.sub-menu {
+  background: #DDD;
+}
+
+li.sub-menu-parent{
+    margin-top: 35px;
+    margin-right: 90px;
+}
+
+a#profile-link {
+   color: white;
+   font-weight: bold;
+   position: absolute;
+   right: 11em;
+}
+a#dashboard {
+   color: black;
 }

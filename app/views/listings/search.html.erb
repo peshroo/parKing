@@ -1,5 +1,5 @@
 <div class="search_results">
-  <% if current_user %>
+
     <% @listings.each do |listing| %>
       <h3><%= listing.name %></h3>
       <p><%= listing.location %></p>
@@ -12,8 +12,5 @@
         <% end %>
     <% end %>
     <div id="map"></div>
-  <% else %>
-  <p>You must be logged in.</p>
-  <%= link_to "Home", root_url %>
-  <% end %>
+  
 </div>
