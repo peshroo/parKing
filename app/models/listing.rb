@@ -8,11 +8,22 @@ class Listing < ApplicationRecord
 
   has_many    :reviews
 
-  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" }
+
+  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" }, default_url: "no_parking_:style.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  def to_hours
-    "#{start.hour}:00"
+
+  def am_pm(hour)
+    meridian = (hour >= 12) ? 'PM' : 'AM'
+    hour = case hour
+          when 0, 12
+            12
+          when 13 .. 23
+            hour - 12
+          else
+            hour
+          end
+    "#{ hour }#{ meridian }"
   end
 
   def operating_hours
@@ -20,25 +31,43 @@ class Listing < ApplicationRecord
   end
 
   def human_time_start
-    if  start == 12
-      return "#{start} PM"
-    elsif start == 0
-      return "12 AM"
-    elsif start < 12
-      return "#{start} AM"
-    else
-      return "#{start - 12} PM"
+    meridian = (start >= 12) ? 'pm' : 'am'
+    hour = start
+      case start
+      when 0, 12 then hour = 12
+       when 13 .. 23 then hour -= 12
+       else
+        hour
     end
+    "#{hour} #{meridian}"
   end
   def human_time_end
-    if self.end == 12
-      return "#{self.end} PM"
-    elsif self.end == 0
-      return "12 AM"
-    elsif self.end < 12
-      return "#{self.end} AM"
-    else
-      return "#{self.end - 12} PM"
+    meridian = (self.end >= 12) ? 'pm' : 'am'
+    hour = self.end
+      case self.end
+      when 0, 12 then hour = 12
+      when 13 .. 23 then hour -= 12
+       else
+        hour
     end
+    "#{hour} #{meridian}"
+  end
+  def available_hours
+    if start < self.end
+      times = (start...self.end).to_a
+    else
+      times = (start...24).to_a
+      times.concat((0..self.end).to_a)
+    end
+    print "times before: #{times}"
+    bookings.where(date: Date.today).each do |booking|
+      booking_times = (booking.start_time..booking.end_time).to_a
+      booking_times.each do |booking_time|
+        times.delete(booking_time)
+      end
+      print "booking times: #{booking_times}"
+    end
+    print "times after: #{times}"
+    times.length > 1 ? "#{am_pm(times[0])} - #{am_pm(times[-1])}" : false
   end
 end

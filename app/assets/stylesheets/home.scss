@@ -19,20 +19,6 @@ body {
     text-align: center;
   }
 }
-.home.index {
-  // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138208.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.kingweight {
-  font-weight: 900;
-}
-
-.parkingsize {
-  font-size: 25px;
-}
 
 header {
   margin: 0;
@@ -93,6 +79,51 @@ header {
 //     left: 42%;
 //   }
 // }
+
+.kingweight {
+  font-weight: 900;
+}
+
+.parkingsize {
+  font-size: 20px;
+}
+.home.index {
+  // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
+  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138208.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  .book,
+  .list {
+    text-align: center;
+    a {
+      border: 3px solid white;
+      padding: 5px;
+      padding-left: 25px;
+      padding-right: 25px;
+      width: 100px;
+      color: white;
+      text-decoration: none;
+      background-color: transparent;
+      transition: all 0.25s ease 0s;
+      font: {
+        weight: bold;
+        size: 18px;
+      }
+      &:hover {
+        border: 3px solid white;
+        background-color: white;
+        color: rgb(50, 50, 50);
+      }
+      // &:active {
+      //   border-top: 3px solid rgb(255, 0, 138);
+      //   border-right: 3px solid rgb(255, 0, 138);
+      //   color: rgb(255, 0, 138);
+      //   border-bottom: 3px solid white;
+      //   border-left: 3px solid white;
+      // }
+    }
+  }
+}
 .book,
 .list {
   text-align: center;
@@ -107,12 +138,13 @@ header {
     background-color: transparent;
     transition: all 0.25s ease 0s;
     font: {
-      // weight: bold;
+      weight: bold;
       size: 18px;
     }
     &:hover {
       background-color: white;
       color: black;
+
     }
   }
 }
@@ -162,8 +194,8 @@ header {
       list-style-type: none;
       a {
         text-decoration: none;
-        color: white;
-        padding: 1em;
+
+
         font: {
           // weight: bold;
           size: 17px;
@@ -175,6 +207,7 @@ header {
     }
   }
 }
+
 .new_user,
 .login {
   display: none;
@@ -193,13 +226,14 @@ header {
   width: 400px;
   height: 24em;
   padding: 2em;
-  background-color: #b9c2cc;
+  background-color: white;
   position: absolute;
   margin: auto;
-  top: 0;
+  top: 13em;
   bottom: 0;
   left: 0;
   right: 0;
+  position: relative;
 }
 
 .new_user > form input {
@@ -218,12 +252,17 @@ header {
     width: 1em;
     height: 1em;
     font: 1.5em Arial;
-    background-color: #bc2a39;
-    color: #e7c0b9;
+    background-color: #bc2a39 ;
+    color: #e7c0b9 ;
     border-radius: 0.5em;
     line-height: 0;
 
-    position: absolute;
+   position: absolute;
     top: 0.25em;
     right: 0.25em;
+}
+.register_link a.new_user_link {
+    position: absolute;
+    bottom: 5em;
+    right: 13em;
 }

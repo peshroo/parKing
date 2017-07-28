@@ -3,24 +3,24 @@ class Booking < ApplicationRecord
   belongs_to :listing
   belongs_to :user
 
-  # validate :booking_date_not_in_past
-  # validate :booking_time_is_during_open_hours
+  # validate :booking_start_time_is_during_open_hours
+  # validate :booking_end_time_is_during_open_hours
+
 
   before_create do
    self.date = Date.today unless self.date
  end
 
-  def booking_time_is_during_open_hours
-    if time.present? && time >= self.listing.start && time <= self.listing.end
+  def booking_start_time_is_during_open_hours
+    if start_time.present? && start_time >= self.listing.start && start_time < self.listing.end
     else
-      errors.add(:time, "Sorry, the parking spot is unavailable at this time, please choose another.")
+      errors.add(:start_time, "is not within available hours")
     end
   end
-
-  def booking_date_not_in_past
-    if date.present? && self.date > Date.today
+  def booking_end_time_is_during_open_hours
+    if end_time.present? && end_time > self.listing.start && end_time < self.listing.end
     else
-      errors.add(:date, "Can't be in the past.")
+      errors.add(:end_time, "is not within available hours")
     end
   end
 
