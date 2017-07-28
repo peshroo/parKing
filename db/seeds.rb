@@ -23,7 +23,6 @@ locations = %w(Dundas Yonge Bloor Queen College King Bathurst Spadina Simcoe)
   listing = Listing.create!(
     name: Faker::App.name,
     address: "#{rand(1..100)} #{listing_location} Toronto, ON",
-    location: listing_location,
     description: Faker::Lorem.paragraph,
     user_id: User.all.sample.id,
     price: rand(1.5..2.5),
@@ -31,7 +30,6 @@ locations = %w(Dundas Yonge Bloor Queen College King Bathurst Spadina Simcoe)
     start: rand(24),
     end: rand(24)
   )
-  puts "location #{listing.name}, #{listing.location} created"
 
   3.times do
     a_listing = Listing.all.sample
