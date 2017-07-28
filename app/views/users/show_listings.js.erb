@@ -10,53 +10,55 @@ $(function() {
       checkbox.parentElement.parentElement.classList.add('off')
     }
   })
-
-  var listingsDiv = document.querySelector('.userlistings_container')
-  listingsDiv.addEventListener('click', function(e) {
-    if (e.target.classList.contains('toggler')) {
-      if (e.target.checked === false) {
-
-      console.log(e.target.checked)
-      $.ajax({
-          url: '/listings/' + e.target.parentElement.firstElementChild.value,
-          method: 'PATCH',
-          data: {
-            no_turbolink: true,
-            listing: {
-              status: false
-            }
-          }
-      }).always(function(response) {
-          if (response.responseText === 'ok') {
-          console.log('sent false');
-          e.target.parentElement.parentElement.classList.toggle('off');
-        } else {
-          e.target.checked = true
-          alert("Request Failed")
-        }
-      });
-
-    } else {
-      $.ajax({
-          url: '/listings/' + e.target.parentElement.firstElementChild.value,
-          method: 'PATCH',
-          data: {
-            no_turbolink: true,
-            listing: {
-              status: true
-            }
-          }
-      }).always(function(response) {
-          if (response.responseText === 'ok') {
-          console.log('sent true')
-          e.target.parentElement.parentElement.classList.toggle('off')
-        } else {
-          e.target.checked = false
-          alert("Request Failed")
-        }
-      })
-    }
-  }
-})
+//
+//   var listingsDiv = document.querySelector('.userlistings_container')
+//   listingsDiv.addEventListener('click', function(e) {
+//     if ( listingsDiv && e.target.classList.contains('toggler')) {
+//       if (e.target.checked === false) {
+//
+//       console.log(e.target.checked)
+//       e.target.parentElement.parentElement.classList.toggle('off');
+//       $.ajax({
+//           url: '/listings/' + e.target.parentElement.firstElementChild.value,
+//           method: 'PATCH',
+//           data: {
+//             no_turbolink: true,
+//             listing: {
+//               status: false
+//             }
+//           }
+//       }).always(function(response) {
+//           if (response.responseText === 'ok') {
+//           console.log('sent false');
+//         } else {
+//           e.target.parentElement.parentElement.classList.toggle('off');
+//           e.target.checked = true
+//           alert("Request Failed")
+//         }
+//       });
+//
+//     } else {
+//       e.target.parentElement.parentElement.classList.toggle('off')
+//       $.ajax({
+//           url: '/listings/' + e.target.parentElement.firstElementChild.value,
+//           method: 'PATCH',
+//           data: {
+//             no_turbolink: true,
+//             listing: {
+//               status: true
+//             }
+//           }
+//       }).always(function(response) {
+//           if (response.responseText === 'ok') {
+//           console.log('sent true')
+//         } else {
+//           e.target.parentElement.parentElement.classList.toggle('off')
+//           e.target.checked = false
+//           alert("Request Failed")
+//         }
+//       })
+//     }
+//   }
+// })
 
 });

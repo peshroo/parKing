@@ -1,20 +1,5 @@
-<%= form_for([@listing, @booking]) do |f| %>
-  <p>
-    <%= f.label :date, 'Please Choose A Date' %><br>
-    <%= f.date_field :date, min: Date.today %>
-  </p>
-
-  <p>
-    <%= f.label :start_time, 'Please Choose A Start Time' %><br>
-    <%= f.time_field :start_time%>
-  </p>
-  <p>
-    <%= f.label :end_time, 'Please Choose An End Time' %><br>
-    <%= f.time_field :end_time %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-
+<%= form_for([@listing, Booking.new]) do |f| %>
+    <%= f.select :start_time, @array_of_times, prompt: "Start" %>
+    <%= f.select :end_time, @array_of_times[1..-1], prompt: 'End' %>
+    <%= f.submit "Book"%>
 <% end %>

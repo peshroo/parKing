@@ -1,17 +1,45 @@
 class ListingsController < ApplicationController
 
     def index
-      @listings = Listing.all
-      @listings = if params[:term]
-        Listing.where('name LIKE ?', "%#{params[:term]}%")
+      if params[:term]
+        @listings =  Listing.where('name LIKE ?', "%#{params[:term]}%")
       else
-        Listing.all
+        @listings =  Listing.all
       end
     end
 
     def show
       @listing = Listing.find(params[:id])
       # Listing.all.sample.bookings.where('date = ?', Date.today)
+      if @listing.start < @listing.end
+        times = (@listing.start...@listing.end).to_a
+        @array_of_times = times.map do |hours|
+          meridian = (hours >= 12) ? 'pm' : 'am'
+          hour = hours
+            case hours
+            when 0, 12 then hour = 12
+            when 13 .. 23 then hour -= 12
+             else
+              hour
+          end
+          ["#{hour} #{meridian}", hours]
+        end
+      else
+        times = (@listing.start...24).to_a
+        times.concat((0...@listing.end).to_a)
+        @array_of_times = times.map do |hours|
+          meridian = (hours >= 12) ? 'pm' : 'am'
+          hour = hours
+            case hours
+            when 0, 12 then hour = 12
+             when 13 .. 23 then hour -= 12
+             else
+              hour
+          end
+          ["#{hour} #{meridian}", hours]
+        end
+      end
+      @array_of_times
     end
 
     def new
@@ -23,7 +51,7 @@ class ListingsController < ApplicationController
 
       if @listing.save
         flash[:notice] = "Your listing has been successfully created!"
-        redirect_to listings_path
+        render html: 'OK'
       else
         render new_listing_path
         # render :new
@@ -53,6 +81,7 @@ class ListingsController < ApplicationController
 
     def destroy
       @listing = Listing.find(params[:id])
+      @listing.bookings.destroy_all
       @listing.destroy
       flash[:notice] = "Your listing has been successfully DESTROYED!"
       redirect_to user_listings_path

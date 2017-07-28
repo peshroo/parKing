@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
       checkbox.parentElement.parentElement.classList.add('off')
     }
   })
+  if (document.querySelector('.user_partial')) {
 
-  var listingsDiv = document.querySelector('.userlistings_container')
-  document.addEventListener('click', function(e) {
-    if ( listingsDiv && e.target.classList.contains('toggler')) {
+  var listingsDiv = document.querySelector('.user_partial')
+  listingsDiv.addEventListener('click', function(e) {
+    if ( e.target.classList.contains('toggler')) {
       if (e.target.checked === false) {
 
+        e.target.parentElement.parentElement.classList.toggle('off');
       console.log(e.target.checked)
       $.ajax({
           url: '/listings/' + e.target.parentElement.firstElementChild.value,
@@ -23,18 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
             listing: {
               status: false
             }
-          }
+          },
+          dataType: "json",
       }).always(function(response) {
           if (response.responseText === 'ok') {
-          console.log('sent false');
-          e.target.parentElement.parentElement.classList.toggle('off');
+            console.log('successfully disabled')
         } else {
+          e.target.parentElement.parentElement.classList.toggle('off');
           e.target.checked = true
           alert("Request Failed")
         }
       });
 
     } else {
+      e.target.parentElement.parentElement.classList.toggle('off')
       $.ajax({
           url: '/listings/' + e.target.parentElement.firstElementChild.value,
           method: 'PATCH',
@@ -43,12 +47,13 @@ document.addEventListener('DOMContentLoaded', function() {
             listing: {
               status: true
             }
-          }
-      }).always(function(response) {
+          },
+          dataType: "json",
+        }).always(function(response) {
           if (response.responseText === 'ok') {
-          console.log('sent true')
-          e.target.parentElement.parentElement.classList.toggle('off')
+          console.log('successfully enabled')
         } else {
+          e.target.parentElement.parentElement.classList.toggle('off')
           e.target.checked = false
           alert("Request Failed")
         }
@@ -56,18 +61,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 })
+}
 
   $('#new_listing').on('submit', function(e) {
     e.preventDefault();
     var that = this
     var address = document.querySelector('#new_listing input[id="listing_address"]').value
     var geocoder= new google.maps.Geocoder();
-    console.log("whatever")
+    console.log("about to request geocoder")
 
     geocoder.geocode({'address': address}, function(results, status) {
       console.log(results[0].geometry.location.lat())
       if (status === 'OK') {
-        console.log('OK')
         document.querySelector('#new_listing input[id="listing_latitude"]').value = results[0].geometry.location.lat()
         document.querySelector('#new_listing input[id="listing_longitude"]').value = results[0].geometry.location.lng()
         $.ajax({
@@ -75,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
           method: $(that).attr('method'),
           data: $(that).serialize(),
         }).done(function(response) {
-          console.log(response)
+          console.log('geocoder OK')
+          window.location.href = '/user_listings'
         });
       }
     });
