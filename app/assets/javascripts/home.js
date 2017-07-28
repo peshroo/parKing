@@ -23,8 +23,4 @@ document.addEventListener('DOMContentLoaded', function() {
   })
   $('.submit_new_user').removeAttr('data-disable-with');
 
-  });
-
-
-
 });

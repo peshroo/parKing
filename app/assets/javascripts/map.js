@@ -36,11 +36,12 @@ document.addEventListener("DOMContentLoaded", function(){
       }).done(function(results) {
         // var half = results.splice(5)
         // console.log(results.filter(function(item) {return item.latitude === null}))
+
         results.filter(function(item) {return item.status === true}).forEach(function(result) {
           var content = '<div id="content">' +
           '<h2 class="listing_heading">' + result.name + '</h2>' +
           '<div class="content_body"><p><b>' + result.address + '</b></p>' +
-          '<p><img src="' + result.image + '" alt="Listing Image" height="150" width="250"></p>' +
+          // '<p><img src="' + result.image.url(:medium) + '" alt="Listing Image" height="150" width="250"></p>' +
           '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
           '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
           '<a href="/listings/' + result.id + '">Book Now </a>' + '</p>' +
