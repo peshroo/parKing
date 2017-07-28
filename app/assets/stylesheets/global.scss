@@ -57,7 +57,7 @@ padding: 9px;
 .side-bar a{
 font-size: 17px;
 position: fixed;
-right: 30px;
+right: 60px;
 top: 10px;
 z-index: 2001;
 }
@@ -89,7 +89,8 @@ nav .topnav{
   transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
 }
 
-.sub-menu li a:hover{color: red;}
+.sub-menu li a:hover{color: grey;}
+.sub-menu li a{color: blue;}
 nav a{ display: block; padding: 0.5em 1em; text-decoration: none; }
 nav .topnav ul,
 nav .topnav ul li { list-style-type: none; padding: 0; margin: 0; }
@@ -106,7 +107,7 @@ nav .topnav> ul > li:first-child { border-left: none; }
 
 li.sub-menu-parent{
     margin-top: 35px;
-    margin-right: 90px;
+    margin-right: 115px;
 }
 
 a#profile-link {

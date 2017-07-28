@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash.now[:error] = 'Sorry, try again!'
-      render :new
+      redirect_to root_url
     end
   end
 

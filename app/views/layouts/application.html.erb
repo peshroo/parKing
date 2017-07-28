@@ -35,9 +35,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt7
 
 
             <ul class="sub-menu">
-              <li><%= link_to "Profile", user_path(current_user.id)%></li>
-              <li><%= link_to "Logout", sessions_path, method: :delete %></li>
-              <li><%= link_to 'Listings', listings_path %></li>
+
+              <li id= "drop"><%= link_to "Profile", user_path(current_user.id)%></li>
+              <li id= "drop"><%= link_to "Logout", sessions_path, method: :delete %></li>
+              <li id= "drop"><%= link_to 'Listings', user_listings_path %></li>
+              <li id= "drop"><%= link_to 'Bookings', user_bookings_path %></li>
 
             </ul>
           </li>
@@ -57,9 +59,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt7
 
                   <ul class="sub-menu">
 
-                    <li><a href="#" class="login_link">Login</a></li>
-                    <li><a href="#" class="new_user_link">Register</a></li>
-                    <li><%= link_to "About", "/about" %></li>
+                    <li id= "drop"><a href="#" class="login_link">Login</a></li>
+                    <li id= "drop"><a href="#" class="new_user_link">Register</a></li>
+                    <li id= "drop"><%= link_to "About", "/about" %></li>
+
                   </ul>
                 </li>
           <% end %>
@@ -84,6 +87,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt7
       </div>
 
       <%= f.submit 'Login' %>
+      <div class="register_link">
+
+      <a href="#" class="new_user_link">Register</a>
+    </div>
 
       <% end %>
     </div>

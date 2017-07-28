@@ -21,9 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('click', function(e) {
     if(e.target && e.target.classList.contains('new_user_link')) {
       e.preventDefault();
+      login_form.style.display = 'none'
       register_form.style.display = 'block'
     }
   })
+  $('.submit_new_user').removeAttr('data-disable-with');
 
 
   xButton.forEach(function(button) {
