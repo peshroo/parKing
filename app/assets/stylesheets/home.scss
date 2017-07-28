@@ -117,6 +117,9 @@ header {
       //   border-bottom: 3px solid white;
       //   border-left: 3px solid white;
       // }
+    }
+  }
+}
 .book,
 .list {
   text-align: center;
@@ -200,6 +203,7 @@ header {
     }
   }
 }
+
 .new_user,
 .login {
   display: none;
@@ -218,13 +222,14 @@ header {
   width: 400px;
   height: 24em;
   padding: 2em;
-  background-color: #b9c2cc;
+  background-color: white;
   position: absolute;
   margin: auto;
-  top: 0;
+  top: 13em;
   bottom: 0;
   left: 0;
   right: 0;
+  position: relative;
 }
 
 .new_user > form input {
@@ -243,12 +248,17 @@ header {
     width: 1em;
     height: 1em;
     font: 1.5em Arial;
-    background-color: #bc2a39;
-    color: #e7c0b9;
+    background-color: #bc2a39 ;
+    color: #e7c0b9 ;
     border-radius: 0.5em;
     line-height: 0;
 
-    position: absolute;
+   position: absolute;
     top: 0.25em;
     right: 0.25em;
+}
+.register_link a.new_user_link {
+    position: absolute;
+    bottom: 5em;
+    right: 13em;
 }

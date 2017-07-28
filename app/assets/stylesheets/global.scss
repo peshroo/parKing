@@ -66,7 +66,10 @@ z-index: 2001;
 nav .topnav{
   margin-right: 0px;
 }
-
+.homepage_avatar  img {
+  margin-right: 12.5em;
+  width: 17px;
+}
 .sub-menu-parent { position: relative; }
 
 .sub-menu {
@@ -92,7 +95,13 @@ nav .topnav{
 
 .sub-menu li a:hover{color: grey;}
 .sub-menu li a{color: blue;}
-nav a{ display: block; padding: 0.5em 1em; text-decoration: none; }
+nav {
+  .sub-menu {
+    a {
+      display: block; padding: 0.5em 1em; text-decoration: none;
+    }
+  }
+}
 nav .topnav ul,
 nav .topnav ul li { list-style-type: none; padding: 0; margin: 0; }
 
@@ -112,11 +121,55 @@ li.sub-menu-parent{
 }
 
 a#profile-link {
+   width: 100px;
    color: white;
    font-weight: bold;
    position: absolute;
-   right: 11em;
+   right: 7em;
 }
 a#dashboard {
    color: black;
+}
+
+
+
+
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=email] {
+  padding: 1em;
+  border: 0;
+  border: 1px solid #f0f0f0 ;
+
+}
+
+input[type=submit] {
+  padding: 1em;
+  color: white;
+  background-color: #2BDE73 ;
+  border: 0;
+  border-radius: 3px;
+
+
+ &:hover {
+    color: #353535 ;
+  }
+}
+
+textarea {
+  width: 50%;
+  border: 1px solid #f0f0f0 ;
+
+}
+input#user_last_name,
+input#user_first_name,
+input#user_email,
+input#user_password,
+input#user_password_confirmation {
+
+ border: 0;
+  border: 1px solid black;
+
 }

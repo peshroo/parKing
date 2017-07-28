@@ -7,9 +7,11 @@
   .users.bookings,
   .users.listings {
     display: inline-block;
-    width: 25%;
+    width: 85%;
     margin: 2em;
-    background-color: rgb(26, 26, 26);
+    padding: 1em;
+    background-color: rgb(214, 214, 214);
+    border: 3px outset rgb(255, 255, 255);
   }
 }
 .users.listings.off {
