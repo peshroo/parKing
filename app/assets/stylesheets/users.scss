@@ -16,6 +16,7 @@
 }
 .users.listings.off {
   background-color: grey;
+  color: darkgrey;
   a {
     color: #6060ff;
   }
@@ -31,12 +32,15 @@
     }
   }
 }
-.users.show {
+.users.show,
+.users.user_listings,
+.users.user_bookings {
   // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
   // background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
   // background-repeat: no-repeat;
   // background-size: cover;
   // background-color: rgb(37, 37, 37);
+  margin-top: 7em;
 }
 .switch {
   position: relative;
@@ -47,7 +51,11 @@
     display: none;
   }
 }
-
+.listings.listing_search_form {
+  background-image: url("https://images5.alphacoders.com/343/343728.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 input:checked + .slider {
   background-color: #005496;
@@ -84,4 +92,10 @@ input:focus + .slider {
   &:before {
     border-radius: 50%;
   }
+}
+.messages.index {
+  margin-top: 7em;
+}
+.listings.new {
+  margin-top: 9em;
 }

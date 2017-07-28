@@ -39,12 +39,12 @@
 
   <p>
     <%= f.label :start, "Start Time" %>
-    <%= f.number_field :start %>
+    <%= f.number_field :start, max:23 %>
   </p>
 
   <p>
     <%= f.label :end, "End Time" %>
-    <%= f.number_field :end %>
+    <%= f.number_field :end, max:23 %>
   </p>
 
   <p>

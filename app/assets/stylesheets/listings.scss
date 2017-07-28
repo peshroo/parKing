@@ -18,6 +18,17 @@
   // background-repeat: no-repeat;
   // background-size: cover;
 }
+.search_listing > form {
+  position: fixed;
+  top: 55%;
+  left: 35%;
+  input[type=text] {
+    border: 1px solid #2BDE73;
+  }
+  select {
+    padding: 12px;
+  }
+}
 .listings.show {
   .show_listing_container {
     margin-top: 5em;

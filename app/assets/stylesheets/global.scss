@@ -31,14 +31,14 @@ html, body {
   color: white;
 }
 .side-bar a:hover {
-  background: rgb(13,25,191) none repeat scroll 0 0;
+  background: rgb(172, 40, 52) none repeat scroll 0 0;
 }
 
 a:hover {
   outline: 0;
 }
 .side-bar a:hover {
-    color: rgb(13,25,191);
+    color: rgb(172, 40, 52);
     text-decoration: none;
     transition: all 0.25s ease 0s;
     -moz-transition: all 0.25s ease 0s;
@@ -52,14 +52,14 @@ color: black;
 display: block;
 line-height: 5px;
 text-align: center;
-padding: 9px;
+padding: 7px;
 }
 
 .side-bar a{
 font-size: 17px;
 position: fixed;
 right: 60px;
-top: 10px;
+top: 25px;
 z-index: 2001;
 }
 
@@ -93,8 +93,8 @@ nav .topnav{
   transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
 }
 
-.sub-menu li a:hover{color: grey;}
-.sub-menu li a{color: blue;}
+.sub-menu li a:hover{color: white;}
+.sub-menu li a{color: rgb(154, 23, 35);}
 nav {
   .sub-menu {
     a {
@@ -109,14 +109,14 @@ nav .topnav> ul { background: black; text-align: center;}
 nav .topnav > ul > li { display: inline-block; border-left: solid 1px #aaa; }
 nav .topnav> ul > li:first-child { border-left: none; }
  .sub-menu a:hover{
- color: blue;
+ color: rgb(172, 40, 52);
 }
 .sub-menu {
   background: #DDD;
 }
 
 li.sub-menu-parent{
-    margin-top: 35px;
+    margin-top: 60px;
     margin-right: 115px;
 }
 
@@ -125,7 +125,8 @@ a#profile-link {
    color: white;
    font-weight: bold;
    position: absolute;
-   right: 7em;
+   right: 8em;
+   line-height: 50px;
 }
 a#dashboard {
    color: black;
@@ -159,7 +160,7 @@ input[type=submit] {
 }
 
 textarea {
-  width: 50%;
+  width: 20%;
   border: 1px solid #f0f0f0 ;
 
 }

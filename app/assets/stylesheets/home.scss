@@ -22,7 +22,6 @@ body {
 }
 
 
-
 header {
   margin: 0;
   background-color: rgba(0, 0, 0, 0.9);
@@ -82,10 +81,16 @@ header {
 //     left: 42%;
 //   }
 // }
+.kingweight {
+  font-weight: 900;
+}
 
+.parkingsize {
+  font-size: 20px;
+}
 .home.index {
   // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
+  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138208.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   .book,
@@ -94,8 +99,8 @@ header {
     a {
       border: 3px solid white;
       padding: 5px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 25px;
+      padding-right: 25px;
       width: 100px;
       color: white;
       text-decoration: none;
@@ -106,9 +111,9 @@ header {
         size: 18px;
       }
       &:hover {
-        border: 3px solid black;
+        border: 3px solid white;
         background-color: white;
-        color: black;
+        color: rgb(50, 50, 50);
       }
       // &:active {
       //   border-top: 3px solid rgb(255, 0, 138);
