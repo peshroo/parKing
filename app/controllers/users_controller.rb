@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @bookings = @user.bookings
+    @listings = @user.listings
   end
 
   def create
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash.now[:error] = 'Sorry, try again!'
-      render :new
+      redirect_to root_url
     end
   end
 
@@ -71,6 +72,18 @@ class UsersController < ApplicationController
       format.js
     end
   end
+  def user_listings
+    @user = current_user
+    @listings = @user.listings
+  end
+
+  def show_listings
+    @user = current_user
+    @listings = @user.listings
+    respond_to do |format|
+      format.js
+    end
+  end
   def review_form
     @review = Review.new
     respond_to do |format|
@@ -87,6 +100,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(session[:user_id])
+    @user.listings.each do |listing|
+      listing.bookings.destroy_all
+      listing.destroy
+    end
     @user.destroy
     session[:user_id] = nil
     redirect_to root_url

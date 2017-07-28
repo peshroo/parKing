@@ -10,16 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725200802) do
+
+ActiveRecord::Schema.define(version: 20170724232633) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "listing_id"
     t.integer "start_time"
     t.integer "end_time"
     t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -30,23 +35,24 @@ ActiveRecord::Schema.define(version: 20170725200802) do
   end
 
   create_table "listings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name"
-    t.string "location"
-    t.text "description"
-    t.integer "price"
-    t.integer "rating"
-    t.integer "start"
-    t.integer "end"
-    t.integer "user_id"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.text "description"
+    t.integer "price"
+    t.integer "start"
+    t.integer "end"
+    t.string "image"
+    t.boolean "status", default: true
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_listings_on_user_id"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -59,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170725200802) do
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -69,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170725200802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

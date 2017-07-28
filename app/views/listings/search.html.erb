@@ -1,8 +1,8 @@
 <div class="search_results">
-  <% if current_user %>
+
     <% @listings.each do |listing| %>
       <h3><%= listing.name %></h3>
-      <p><%= listing.location %></p>
+      <p><%= listing.address %></p>
       <p>$<%= listing.price %></p>
       <p>From: <%= listing.human_time_start %> - <%= listing.human_time_end %></p>
         <% if current_user.bookings.find_by(listing_id: listing.id) %>
@@ -11,9 +11,7 @@
           <%= link_to "Book Now", new_listing_booking_path(listing) %>
         <% end %>
     <% end %>
-    <div id="map"></div>
   <% else %>
-  <p>You must be logged in.</p>
-  <%= link_to "Home", root_url %>
   <% end %>
 </div>
+<div id="map"></div>

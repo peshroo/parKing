@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @user = User.new
     @current_user = current_user
+    
   end
 
   def create

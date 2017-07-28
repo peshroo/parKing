@@ -6,7 +6,7 @@
       <div class="listing">
         <h3><%= link_to listing.name, listing %></h3>
         <p><%= image_tag listing.image.url(:thumb) %></p>
-        Location: <%= listing.location %><br>
+        Location: <%= listing.address %><br>
         Description: <%= listing.description %><br>
         Price: $<%= listing.price %><br>
         Rating: <%= listing.reviews.average(:rating).to_i %><br>

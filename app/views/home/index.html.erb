@@ -1,66 +1,20 @@
 <div class="homepage_container">
 
+
   <div class="book">
+    <% if current_user %>
     <%= link_to "Book", listing_search_form_path %>
-  </div>
-
-  <div class="list">
-    <%= link_to 'List', new_listing_path %>
-  </div>
-
-  <div class="new_user">
-    <%= form_for @user, html: { multipart: true } do |f| %>
-      <button type="button" class="close">x</button>
-
-      <div class='field'>
-        <%= f.label :avatar %><br>
-        <%= f.file_field :avatar %>
-      </div>
-
-      <div class="field">
-        <%= f.label :first_name %><br>
-        <%= f.text_field :first_name %>
-      </div>
-
-      <div class="field">
-          <%= f.label :last_name %><br>
-          <%= f.text_field :last_name %>
-      </div>
-
-      <div class='field'>
-        <%= f.label :email %><br>
-        <%= f.email_field :email %>
-      </div>
-
-      <div class='field'>
-        <%= f.label :password %><br>
-        <%= f.password_field :password %>
-      </div>
-
-      <div class='field'>
-        <%= f.label :password_confirmation %><br>
-        <%= f.password_field :password_confirmation %>
-      </div>
-
-      <%= f.submit 'Sign Up' %>
-
+    <% else %>
+    <a href="#" class="login_link">Book</a>
     <% end %>
   </div>
 
-  <div class="login">
-  <%= form_for :sessions, url: sessions_path do |f| %>
-    <button type="button" class="close">x</button>
-    <div class='field'>
-      <%= f.label :email %><br>
-      <%= f.email_field :email %>
-    </div>
+  <div class="list">
+    <% if current_user %>
+     <%= link_to 'List', new_listing_path %>
+    <% else %>
+      <a href="#" class="login_link">List</a>
+    <% end %>
+  </div>
 
-    <div class='field'>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </div>
 
-    <%= f.submit 'Login' %>
-
-  <% end %>
-</div>
