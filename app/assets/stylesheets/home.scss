@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .pages.show {
@@ -21,15 +21,23 @@ body {
 }
 .home.index {
   // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
+  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138208.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.kingweight {
+  font-weight: 900;
+}
+
+.parkingsize {
+  font-size: 25px;
 }
 
 header {
   margin: 0;
   background-color: rgba(0, 0, 0, 0.9);
-  padding: 26px;
+  padding: 15px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -39,7 +47,7 @@ header {
     line-height: 50px;
     font: {
       size: 21px;
-      weight: bold;
+      // weight: bold;
     }
     // background-image: url('crown-512-pink.png');
     background-size: 17px;
@@ -99,7 +107,7 @@ header {
     background-color: transparent;
     transition: all 0.25s ease 0s;
     font: {
-      weight: bold;
+      // weight: bold;
       size: 18px;
     }
     &:hover {
@@ -157,7 +165,7 @@ header {
         color: white;
         padding: 1em;
         font: {
-          weight: bold;
+          // weight: bold;
           size: 17px;
         }
         &:active {
