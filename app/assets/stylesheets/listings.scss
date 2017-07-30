@@ -4,6 +4,15 @@
 .search_results {
   display: none;
 }
+.listings.listing_search_form {
+  background-image: url("https://images5.alphacoders.com/343/343728.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.listings.search {
+  overflow: hidden;
+}
 .listings.index {
   .listings_index {
     .listing {
@@ -17,6 +26,55 @@
   // background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
   // background-repeat: no-repeat;
   // background-size: cover;
+}
+#infowindow-content .title {
+       font-weight: bold;
+}
+
+#infowindow-content {
+       display: none;
+}
+#map #infowindow-content {
+       display: inline;
+}
+.listings.new {
+  margin-top: 6em;
+  overflow: hidden;
+  .new_listing_form_container {
+    position: relative;
+    width: 80%;
+    margin-left: 13em;
+    #pac-input {
+        background-color: #fff;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        margin-top: 5px;
+        margin-right: 5px;
+        padding: 4px 11px 4px 13px;
+        text-overflow: ellipsis;
+        width: 250px;
+        z-index: 5000;
+        &:focus {
+       border-color: #4d90fe;
+        }
+      }
+    #new_listing_map {
+      height: 460px;
+      width: 60%;
+      position: absolute;
+      right: 6em;
+      top: 1em;
+      display: inline-block;
+    }
+    .new_listing_form_div {
+      width: 30%;
+      position: absolute;
+      top: 3em;
+      left: 0;
+      display: inline-block;
+    }
+  }
 }
 .search_listing > form {
   position: fixed;
