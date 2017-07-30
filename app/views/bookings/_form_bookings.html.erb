@@ -3,3 +3,8 @@
     <%= f.select :end_time, @array_of_times[1..-1], prompt: 'End' %>
     <%= f.submit "Book"%>
 <% end %>
+<% if @listing.bookings.where(date: Date.today) %>
+  <% @listing.bookings.where(date: Date.today).each do |booking| %>
+    <p><%= booking.user.full_name %>: <%= booking.start_time %> to <%= booking.end_time %></p>
+  <% end %>
+<% end %>

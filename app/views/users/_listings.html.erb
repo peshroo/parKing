@@ -6,7 +6,7 @@
       <p><%= listing.address %></p>
       <p>$<%= listing.price %></p>
       <p><%= listing.human_time_start %> to <%= listing.human_time_end %></p>
-      <%= link_to 'Edit', edit_listing_path(listing.id), remote: true %>
+      <%= link_to 'Edit', edit_listing_path(listing.id)%>
 
       <label class="switch">
         <%= hidden_field_tag :id, listing.id %>

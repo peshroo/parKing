@@ -13,9 +13,6 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
 </script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&callback=initMap">
-</script>
 </head>
 <body class="<%= params[:controller] %> <%= params[:action] %>">
   <header class="header">
@@ -25,7 +22,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt7
 
     <div class="topnav div">
       <nav class="topnav">
-        <p class="homepage_avatar"><%= link_to "Hi #{current_user.first_name}!", user_path(current_user.id), id: 'profile-link' %></p>
+        <p class="homepage_avatar"><%= link_to "Hi #{current_user.first_name} | You have $#{current_user.wallet}", user_path(current_user.id), id: 'profile-link' %></p>
         <ul class="topnav links">
           <li class="sub-menu-parent">
             <div class="side-bar">
@@ -127,5 +124,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt7
         <% end %>
       </div>
     </main>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxfwQJn9-quCut5Srf4IA8Zt78ZFlc6aU&libraries=places&callback=initMap"></script>
   </body>
   </html>
