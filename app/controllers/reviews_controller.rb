@@ -11,6 +11,8 @@ class ReviewsController < ApplicationController
       @review.user_id = current_user.id
 
       if @review.save
+        wallet = @review.user.wallet + 0.10
+        @review.user.update(wallet: wallet)
         redirect_to user_bookings_path
       else
         redirect_to root_url

@@ -51,6 +51,8 @@ class ListingsController < ApplicationController
       @listing = Listing.new(listing_params)
 
       if @listing.save
+        wallet = @listing.user.wallet + 0.50
+        @listing.user.update(wallet: wallet)
         flash[:notice] = "Your listing has been successfully created!"
         render html: 'OK'
       else
@@ -93,7 +95,8 @@ class ListingsController < ApplicationController
 
     def search
       if current_user
-        @listings = Listing.where(status: true).where('address LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
+        @listings = Listing.all
+        # @listings = Listing.where(status: true).where('address LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
       else
         flash[:notice] = "You must be logged in."
         render '/'

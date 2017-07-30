@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
     @user.listings.each do |listing|
       listing.bookings.destroy_all
-      listing.destroy
+      listing.update(status: false)
     end
     @user.destroy
     session[:user_id] = nil
