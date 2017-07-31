@@ -23,11 +23,14 @@ body {
 header {
   margin: 0;
   background-color: rgba(0, 0, 0, 0.9);
-  padding: 15px;
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 100;
+  .header-container {
+    width:100%;
+    height:100%;
+  }
   h1 {
     height: 100%;
     line-height: 50px;
@@ -48,6 +51,9 @@ header {
   a {
     text-decoration: none;
     color: white;
+    padding: 15px 20px;
+    display: inline-block;
+
   }
 }
 .listings_index {
@@ -58,14 +64,12 @@ header {
   }
 }
 .container {
-  position: relative;
-  margin-top: 52px;
-  margin-left: auto;
-  margin-right: auto;
+  height:100%;
   width: 100%;
 }
 
 .homepage_container {
+  position: absolute;
   height: 100%;
   width: 100%;
 }
@@ -87,11 +91,44 @@ header {
 .parkingsize {
   font-size: 20px;
 }
+
+.home-blank-space {
+  margin: 0;
+  background-color: white;
+  height:300px;
+  width: 100%;
+  text-align: center;
+  .column-left{ float: left; width: 20%; margin-left: 13%; }
+  .column-right{ float: right; width: 20%; margin-right: 13%; }
+  .column-center{ display: inline-block; width: 20%; }
+}
+
+.home-second-blank-space {
+  margin: 0;
+  background-color: white;
+  height:300px;
+  width: 100%;
+  text-align: center;
+  .column-left{ float: left; width: 20%; margin-left: 13%; }
+  .column-right{ float: right; width: 20%; margin-right: 13%; }
+  .column-center{ display: inline-block; width: 20%; }
+}
+
+.home-second-image {
+  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-137089.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100%;
+}
+
 .home.index {
   // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
   background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138208.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: -170px;
+  height:100%;
+  position: relative;
   .book,
   .list {
     text-align: center;
@@ -124,6 +161,35 @@ header {
     }
   }
 }
+
+.bookyourspot {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  font: {
+    weight: bold;
+    size: 200px;
+  }
+  position: absolute;
+  top: 392px;
+  left: 16%;
+}
+
+.howitworks {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  font: {
+    weight: bold;
+    size: 200px;
+  }
+  position: absolute;
+  top: 721px;
+  left: 10%;
+}
+
 .book,
 .list {
   text-align: center;
@@ -149,6 +215,7 @@ header {
   }
 }
 
+
 .book a {
   position: absolute;
   top: 300px;
@@ -161,11 +228,12 @@ header {
   left: 55%;
 }
 
-.topnav.div {
-  position: fixed;
-  top: 0;
-  right: 0;
-  .topnav.links {
+.topnav {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  float: right;
+  .links {
     color: white;
     span {
       color: white;
@@ -265,4 +333,45 @@ header {
     position: absolute;
     bottom: 5em;
     right: 13em;
+}
+
+footer {
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  height:320px;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  list-style-type: none;
+  text-align: center;
+  .column-left { float: left; width: 20%; margin-left: 13%; }
+  .column-right { float: right; width: 20%; margin-right: 13%; }
+  .column-center { display: inline-block; width: 20%; }
+  .footer-container {
+    width:100%;
+    height:100%;
+  }
+  h1 {
+    height: 100%;
+    line-height: 50px;
+    font: {
+      size: 21px;
+      // weight: bold;
+    }
+    // background-image: url('crown-512-pink.png');
+    background-size: 17px;
+    background-repeat: no-repeat;
+    background-position: 42px 0px;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px;
+    display: inline-block;
+  }
 }

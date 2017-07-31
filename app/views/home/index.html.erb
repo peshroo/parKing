@@ -1,20 +1,130 @@
-<div class="homepage_container">
+<section class="home index">
 
+  <div class="homepage_container">
 
-  <div class="book">
-    <% if current_user %>
-    <%= link_to "Book", listing_search_form_path %>
-    <% else %>
-    <a href="#" class="login_link">Book</a>
+    <div class="bookyourspot">
+      Just park it.
+    </div>
+
+    <div class="search_listing">
+      <%= render 'search_form' %>
+    </div>
+
+    <!-- <div class="book">
+      <% if current_user %>
+      <%= link_to "Book", listing_search_form_path %>
+      <% else %>
+      <a href="#" class="login_link">Book</a>
+      <% end %>
+    </div>
+
+    <div class="list">
+      <% if current_user %>
+       <%= link_to 'List', new_listing_path %>
+      <% else %>
+        <a href="#" class="login_link">List</a>
+      <% end %>
+    </div> -->
+
+  </div>
+
+  <div class="login">
+    <%= form_for :sessions, url: sessions_path do |f| %>
+      <button type="button" class="close">x</button>
+      <div class='field'>
+        <%= f.label :email %><br>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class='field'>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      <div class="register_link">
+         <a href="#" class="new_user_link">Register</a>
+      </div>
+      <%= f.submit 'Login' %>
     <% end %>
   </div>
 
-  <div class="list">
-    <% if current_user %>
-     <%= link_to 'List', new_listing_path %>
-    <% else %>
-      <a href="#" class="login_link">List</a>
+  <div class="new_user">
+    <%= form_for User.new do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="field">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div class="field">
+          <%= f.label :last_name %><br>
+          <%= f.text_field :last_name %>
+      </div>
+
+      <div class='field'>
+        <%= f.label :email %><br>
+        <%= f.email_field :email %>
+      </div>
+
+
+      <div class='field'>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class='field'>
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+      <%= f.submit 'Sign Up' %>
+
     <% end %>
   </div>
+</section>
 
-</div>
+<section class="home-blank-space">
+  <div class="column-left">
+    <br><i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+    <br><br><span class='parkingsize'>p a r k<span class='kingweight'> F A S T</span></span>
+    <br><br>Don't waste time!
+    <br>Reserve a parking spot ahead of time to beat the rest!
+  </div>
+  <div class="column-center">
+    <br><i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
+    <br><br><span class='parkingsize'>p a r k<span class='kingweight'> C L O S E</span></span>
+    <br><br>Don't waste energy!
+    <br>Get a spot close to the action!
+  </div>
+  <div class="column-right">
+    <br><i class="fa fa-money fa-5x" aria-hidden="true"></i>
+    <br><br><span class='parkingsize'>p a r k<span class='kingweight'> C H E A P</span></span>
+    <br><br>Don't waste money!
+    <br>Literally pay like 2 bucks!
+  </div>
+</section>
+
+<section class="home-second-image">
+  <div class="howitworks">
+    How it works.
+  </div>
+</section>
+
+<section class="home-second-blank-space">
+  <div class="column-left">
+    <br><i class="fa fa-search fa-5x" aria-hidden="true"></i>
+    <br><br><span class='parkingsize'>p a r k<span class='kingweight'> S E A R C H</span></span>
+    <br><br>Look for your parking spot!
+    <br>Book it once you find it.
+  </div>
+  <div class="column-center">
+    <br><i class="fa fa-car fa-5x" aria-hidden="true"></i>
+    <br><br><span class='parkingsize'>p a r k<span class='kingweight'> C A R</span></span>
+    <br><br>Park your car!
+    <br>No need to wait for one to open up.
+  </div>
+  <div class="column-right">
+    <br><i class="fa fa-usd fa-5x" aria-hidden="true"></i>
+    <br><br><span class='parkingsize'>p a r k<span class='kingweight'> P A Y</span></span>
+    <br><br>We automatically charge the credit card on file, so you never need cash.
+  </div>
+</section>
