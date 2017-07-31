@@ -57,6 +57,7 @@ class ListingsController < ApplicationController
         end
         ["#{hour} #{meridian}", hours]
       end
+      puts params
     end
 
     def create
@@ -71,6 +72,7 @@ class ListingsController < ApplicationController
         render new_listing_path
         # render :new
       end
+      puts params
     end
 
     def edit
@@ -137,7 +139,7 @@ class ListingsController < ApplicationController
     end
 private
     def listing_params
-      params.require(:listing).permit(:user_id, :name, :location, :description, :price, :rating, :start, :end, :image, :term, :latitude, :longitude, :address, :status)
+      params.require(:listing).permit(:image, :user_id, :name, :location, :description, :price, :rating, :start, :end, :term, :latitude, :longitude, :address, :status)
     end
 
   end

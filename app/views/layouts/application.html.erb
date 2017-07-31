@@ -27,7 +27,7 @@
 
     <div class="topnav div">
       <nav class="topnav">
-        <p class="homepage_avatar"><%= link_to "Hi #{current_user.first_name} | You have $#{current_user.wallet}", user_path(current_user.id), id: 'profile-link' %></p>
+        <p class="homepage_avatar"><%= image_tag current_user.avatar.url(:thumb) %><%= link_to "Hi #{current_user.first_name} | You have $#{current_user.wallet}", user_path(current_user.id), id: 'profile-link' %></p>
         <ul class="topnav links">
           <li class="sub-menu-parent">
             <div class="side-bar">
