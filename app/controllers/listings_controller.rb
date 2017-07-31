@@ -45,6 +45,18 @@ class ListingsController < ApplicationController
 
     def new
       @listing = Listing.new
+      full_time = (0..23).to_a
+      @array_of_full_times = full_time.map do |hours|
+        meridian = (hours >= 12) ? 'pm' : 'am'
+        hour = hours
+          case hours
+          when 0, 12 then hour = 12
+          when 13 .. 23 then hour -= 12
+           else
+            hour
+        end
+        ["#{hour} #{meridian}", hours]
+      end
     end
 
     def create
@@ -63,6 +75,18 @@ class ListingsController < ApplicationController
 
     def edit
       @listing = Listing.find(params[:id])
+      full_time = (0..23).to_a
+      @array_of_full_times = full_time.map do |hours|
+        meridian = (hours >= 12) ? 'pm' : 'am'
+        hour = hours
+          case hours
+          when 0, 12 then hour = 12
+          when 13 .. 23 then hour -= 12
+           else
+            hour
+        end
+        ["#{hour} #{meridian}", hours]
+      end
     end
 
     def update
