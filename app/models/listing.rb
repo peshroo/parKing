@@ -1,4 +1,5 @@
 class Listing < ApplicationRecord
+  attr_accessor :image
 
   validates :name, :address, :description, :price, presence: true
   validates :start, :end, numericality: true
@@ -9,9 +10,13 @@ class Listing < ApplicationRecord
   has_many    :reviews
 
 
-  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" }
+  has_attached_file :image,
+    styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" },
+    # path: ":rails_root/public/system/:attachment/:id/:style/:filename",
+    # url: "/system/:attachment/:id/:style/:filename",
+    default_url: 'no_parking_:style.png'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-
+  do_not_validate_attachment_file_type :image
 
   def am_pm(hour)
     meridian = (hour >= 12) ? 'PM' : 'AM'

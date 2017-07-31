@@ -92,33 +92,33 @@ document.addEventListener('DOMContentLoaded', function() {
     //   console.log('Geocode was not successful for the following reason: ' + status);
     // }
     // })
-    //
-    //   // .done(function(response) {
-    //   //   console.log("DONE" + response)
-    //   //   // geocoder.geocode({'address': address}, function(results, status) {
-    //   //   //   $.ajax({
-    //   //   //        url: "http://localhost:3000/listings/" + listingId,
-    //   //   //        method: "PATCH",
-    //   //   //        data: {
-    //   //   //          no_turbolink: true,
-    //   //   //          remote: true,
-    //   //   //          listing: {
-    //   //   //            latitude: results[0].geometry.location.lat(),
-    //   //   //            longitude: results[0].geometry.location.lng()
-    //   //   //          }
-    //   //   //        }
-    //   //   //     }).done(function(reply) {
-    //   //   //       console.log(reply)
-    //   //   //     }).fail(function() {
-    //   //   //       console.log("You broke me dammit")
-    //   //   //     });
-    //   //   // })
-    //   // }).fail(function() {
-    //   //   console.log('air roar');
-    //   // }).always(function() {
-    //   //   console.log('all ways');
-    //   // });
-
+  //   //
+  //   //   // .done(function(response) {
+  //   //   //   console.log("DONE" + response)
+  //   //   //   // geocoder.geocode({'address': address}, function(results, status) {
+  //   //   //   //   $.ajax({
+  //   //   //   //        url: "http://localhost:3000/listings/" + listingId,
+  //   //   //   //        method: "PATCH",
+  //   //   //   //        data: {
+  //   //   //   //          no_turbolink: true,
+  //   //   //   //          remote: true,
+  //   //   //   //          listing: {
+  //   //   //   //            latitude: results[0].geometry.location.lat(),
+  //   //   //   //            longitude: results[0].geometry.location.lng()
+  //   //   //   //          }
+  //   //   //   //        }
+  //   //   //   //     }).done(function(reply) {
+  //   //   //   //       console.log(reply)
+  //   //   //   //     }).fail(function() {
+  //   //   //   //       console.log("You broke me dammit")
+  //   //   //   //     });
+  //   //   //   // })
+  //   //   // }).fail(function() {
+  //   //   //   console.log('air roar');
+  //   //   // }).always(function() {
+  //   //   //   console.log('all ways');
+  //   //   // });
+  //
     });
   $.fn.stars = function() {
     return $(this).each(function() {
