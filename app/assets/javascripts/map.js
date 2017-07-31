@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
 
       $.ajax({
-        url: 'http://localhost:3000/listing_markers',
+        url: '/listing_markers',
         method: 'GET',
         dataType: 'json',
       }).done(function(results) {
