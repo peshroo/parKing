@@ -6,6 +6,25 @@ document.addEventListener("DOMContentLoaded", function(){
       xhr.setRequestHeader('X-CSRF-TOKEN', token);
     }
   });
+  function getAvg(array) {
+    return array.reduce(function (p, c) {
+      return p + c;
+    }) / array.length;
+  }
+  $.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        val = Math.round(val * 2) / 2; /* To round to nearest half */
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+  }
+
   // function initMap(){
   window.initMap = function() {
     if (document.getElementById('map')) {
@@ -38,15 +57,24 @@ document.addEventListener("DOMContentLoaded", function(){
         // console.log(results.filter(function(item) {return item.latitude === null}))
 
         results.filter(function(item) {return item.status === true}).forEach(function(result) {
+          var ratingArray = result.reviews.map(function(review) {
+            return review.rating
+          })
+          if (ratingArray.length) {
+            var theAvg = getAvg(ratingArray)
+          } else {
+            var theAvg = 0
+          }
           var content = '<div id="content">' +
           '<h2 class="listing_heading">' + result.name + '</h2>' +
           '<div class="content_body"><p><b>' + result.address + '</b></p>' +
+          '<p>Rating: <span class="stars">' + theAvg + '</span></p>' +
           // '<p><img src="' + result.image.url(:medium) + '" alt="Listing Image" height="150" width="250"></p>' +
           '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
           '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
           '<a href="/listings/' + result.id + '">Book Now </a>' + '</p>' +
           '</div>';
-
+          console.log(ratingArray)
         // console.log(content);
         var infowindow = new google.maps.InfoWindow({
           content: content
@@ -83,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function(){
           //   console.log('Geocode was not successful for the following reason: ' + status);
           // }
         // })
+        $('span.stars').stars();
         })
       })
     } else if (document.getElementById('new_listing_map')) {

@@ -46,7 +46,7 @@
       <h4>Description:</h4>
       <p><%= @listing.description %></p>
         <% @listing.reviews.each do |review| %>
-          <p><%= review.user.first_name %> wrote:</p>
+          <p><%= review.user.first_name %> rated:<span class="stars"><%= review.rating %></span></p>
           <p><%= review.comment %></p>
         <% end %>
     </div>

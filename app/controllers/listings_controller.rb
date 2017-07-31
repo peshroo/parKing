@@ -107,7 +107,7 @@ class ListingsController < ApplicationController
       respond_to do |format|
         format.json do
         @listings = Listing.all
-        render json: @listings, include: :user
+        render json: @listings, include: [:reviews, :user]
         end
       end
     end
