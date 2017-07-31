@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function(){
           '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
           '<a href="/listings/' + result.id + '">Book Now </a>' + '</p>' +
           '</div>';
+          $('span.stars').stars();
           console.log(ratingArray)
         // console.log(content);
         var infowindow = new google.maps.InfoWindow({
@@ -111,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function(){
           //   console.log('Geocode was not successful for the following reason: ' + status);
           // }
         // })
-        $('span.stars').stars();
         })
       })
     } else if (document.getElementById('new_listing_map')) {
