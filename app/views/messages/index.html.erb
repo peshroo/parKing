@@ -1,39 +1,47 @@
-<% if @over_ten %>
-   <%= link_to 'Show Previous', '?m=all' %>
-<% end %>
+<section class="messagesimage">
+  <div class="messagesheader">
+    <%= @conversation.recipient.first_name %>
+  </div>
+</section>
 
-<div class="ui segment">
-  <% date = 0 %>
-    <% @messages.each do |message| %>
-      <% if date != message.created_at.to_date %>
-        <% date = message.created_at.to_date %>
-          <% if date == Date.today.to_date %>
-            <hr><strong>TODAY</strong><hr>
-          <% else %>
-            <hr><strong><%= message.created_at.to_date.strftime("%^b %-d, %Y") %></strong><hr>
-          <% end %>
-      <%end%>
+<div class="messagesblankspace">
+  <% if @over_ten %>
+     <%= link_to 'Show Previous', '?m=all' %>
+  <% end %>
 
-      <% if message.body %>
-        <% sender = User.find(message.user_id) %>
-          <% if current_user.id == sender.id %>
-            <%= image_tag current_user.avatar.url(:thumb) %> <strong>You</strong> at <%= message.message_time %>:<br>
-          <% else %>
-            <%= image_tag sender.avatar.url(:thumb) %><strong><%= sender.first_name %></strong> at <%= message.message_time %>:<br>
-          <% end %>
-          <%= message.body %><br><br>
+  <div class="ui segment">
+    <% date = 0 %>
+      <% @messages.each do |message| %>
+        <% if date != message.created_at.to_date %>
+          <% date = message.created_at.to_date %>
+            <% if date == Date.today.to_date %>
+              <hr><strong>TODAY</strong><hr>
+            <% else %>
+              <hr><strong><%= message.created_at.to_date.strftime("%^b %-d, %Y") %></strong><hr>
+            <% end %>
+        <%end%>
+
+        <% if message.body %>
+          <% sender = User.find(message.user_id) %>
+            <% if current_user.id == sender.id %>
+              <%= image_tag current_user.avatar.url(:thumb) %> <strong>You</strong> at <%= message.message_time %>:<br>
+            <% else %>
+              <%= image_tag sender.avatar.url(:thumb) %><strong><%= sender.first_name %></strong> at <%= message.message_time %>:<br>
+            <% end %>
+            <%= message.body %><br><br>
+        <% end %>
+
       <% end %>
+  </div>
 
-    <% end %>
+  <%= form_for [@conversation, @conversation.messages.new], html: {class: "ui reply form"} do |f| %>
+    <div class="field">
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div>
+      <%= f.submit "Send", class: "ui blue labeled submit icon button" %>
+    </div>
+
+  <% end %>
 </div>
-
-<%= form_for [@conversation, @conversation.messages.new], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "Send", class: "ui blue labeled submit icon button" %>
-  </div>
-
-<% end %>
