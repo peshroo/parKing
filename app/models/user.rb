@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   before_create do
-    wallet = 5.00
+    self.wallet = 5.00
   end
 
   def full_name
