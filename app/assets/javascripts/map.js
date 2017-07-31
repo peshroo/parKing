@@ -28,18 +28,120 @@ document.addEventListener("DOMContentLoaded", function(){
   // function initMap(){
   window.initMap = function() {
     if (document.getElementById('map')) {
+      var map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 43.6532, lng: -79.3832 },
+      zoom: 11
+    });
+    var infoWindow = new google.maps.InfoWindow;
+    var geocoder = new google.maps.Geocoder();
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        console.log(pos)
+        map.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+        var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+          var marker2 = new google.maps.Marker({
+            map: map,
+            position: currentLocation,
+            icon: '/crown2.png',
+            animation: dropdown,
+          });
+
+          var options = {
+            zoom: 13,
+            center: currentLocation,
+          }
+
+        map = new google.maps.Map(document.getElementById('map'), options);
+      });
+    } else {
+    // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+      console.log('failed navigator')
+    }
 
 
-      // Map options
-      var options = {
-        zoom: 13,
-        center: {lat: 43.6532, lng: -79.3832}
-      }
 
-      // New map
-      var map = new google.maps.Map(document.getElementById('map'), options);
-      var infoWindow = new google.maps.InfoWindow;
-      var geocoder= new google.maps.Geocoder();
+
+    // Note: This example requires that you consent to location sharing when
+          // prompted by your browser. If you see the error "The Geolocation service
+          // failed.", it means you probably did not give permission for the browser to
+          // locate you.
+    // var map, infoWindow;
+    // function initMap() {
+    //   map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat: -34.397, lng: 150.644},
+    //     zoom: 6
+    //   });
+    //   infoWindow = new google.maps.InfoWindow;
+
+    // Try geolocation.
+
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+                             'Error: The Geolocation service failed.' :
+                             'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+
+
+  // Map options
+
+    function handleSearchResults(results, status){
+      console.log(results);
+
+    for(var i = 0; i < results.length; i++){
+
+      var marker = new google.maps.Marker({
+        map:map,
+        position: results[i].geometry.location,
+        icon: '/crown4.png',
+      });
+    }
+
+    function performSearch(){
+      var request = {
+        bounds: map.getBounds(),
+        name: "parking",
+      };
+    }
+    service.nearbySearch(request, handleSearchResults);
+    // this ensures we wait until the map bounds are initialized before we perform the search
+    google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
+
+    // draw circle on map
+    var circleOptions = new google.maps.Circle({
+      center:currentLocation,
+      radius:20000,
+      strokeColor:"#0000FF",
+      strokeOpacity:0.8,
+      strokeWeight:2,
+      fillColor:"#0000FF",
+      fillOpacity:0.4
+    });
+    circle = new googlemaps.Circle(circleOptions)
+}
+      //
+      // // Map options
+      // var options = {
+      //   zoom: 13,
+      //   center: {lat: 43.6532, lng: -79.3832}
+      // }
+      //
+      // // New map
+      // var map = new google.maps.Map(document.getElementById('map'), options);
+      // var infoWindow = new google.maps.InfoWindow;
+      // var geocoder= new google.maps.Geocoder();
 
       function human_time(hours) {
         var suffix = hours >= 12 ? "PM":"AM";
