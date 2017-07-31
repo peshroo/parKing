@@ -61,7 +61,7 @@ class ListingsController < ApplicationController
 
     def create
       @listing = Listing.new(listing_params)
-
+      
       if @listing.save
         wallet = @listing.user.wallet + 0.50
         @listing.user.update(wallet: wallet)
