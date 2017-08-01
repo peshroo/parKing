@@ -36,7 +36,8 @@
           <% if current_user %>
           <span class="homepage_avatar">
             <%= image_tag current_user.avatar.url(:thumb) %>
-            <%= link_to "Hi #{current_user.first_name}!", user_path(current_user.id), id: 'profile-link' %>
+            <%= link_to "Welcome #{current_user.first_name.upcase}", user_path(current_user.id), id: 'profile-link' %>
+            <span id="funds">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funds: $ <%= current_user.wallet %>0 </span>
           </span>
           <ul class="topnav links">
             <li class="sub-menu-parent">
