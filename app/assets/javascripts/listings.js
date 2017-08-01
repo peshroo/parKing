@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var toggles = document.querySelectorAll('.switch > input[type="checkbox"]')
   toggles.forEach(function(checkbox) {
     if (checkbox.checked) {
-      checkbox.parentElement.parentElement.classList.remove('off')
+      checkbox.parentElement.parentElement.parentElement.classList.remove('off')
     } else {
-      checkbox.parentElement.parentElement.classList.remove('off')
-      checkbox.parentElement.parentElement.classList.add('off')
+      checkbox.parentElement.parentElement.parentElement.classList.remove('off')
+      checkbox.parentElement.parentElement.parentElement.classList.add('off')
     }
   })
   if (document.querySelector('.user_partial')) {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if ( e.target.classList.contains('toggler')) {
       if (e.target.checked === false) {
 
-        e.target.parentElement.parentElement.classList.toggle('off');
+        e.target.parentElement.parentElement.parentElement.classList.toggle('off');
       console.log(e.target.checked)
       $.ajax({
           url: '/listings/' + e.target.parentElement.firstElementChild.value,
@@ -31,14 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
           if (response.responseText === 'ok') {
             console.log('successfully disabled')
         } else {
-          e.target.parentElement.parentElement.classList.toggle('off');
+          e.target.parentElement.parentElement.parentElement.classList.toggle('off');
           e.target.checked = true
           alert("Request Failed")
         }
       });
 
     } else {
-      e.target.parentElement.parentElement.classList.toggle('off')
+      e.target.parentElement.parentElement.parentElement.classList.toggle('off')
       $.ajax({
           url: '/listings/' + e.target.parentElement.firstElementChild.value,
           method: 'PATCH',
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (response.responseText === 'ok') {
           console.log('successfully enabled')
         } else {
-          e.target.parentElement.parentElement.classList.toggle('off')
+          e.target.parentElement.parentElement.parentElement.classList.toggle('off')
           e.target.checked = false
           alert("Request Failed")
         }

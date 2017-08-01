@@ -69,17 +69,29 @@
 }
 
 .user_partial {
-  width: 100%;
-  margin-left: 2em;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   .users.bookings,
   .users.listings {
     display: inline-block;
     width: 85%;
     margin: 2em;
     padding: 1em;
-    background-color: rgb(214, 214, 214);
-    border: 3px outset rgb(255, 255, 255);
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0 10px 6px -6px #777;
   }
+}
+.users.listings, .users.bookings { position: relative; }
+.users_listings_top {
+  position: absolute;
+  margin-left: 7em;
+}
+.users_listing_image { margin-left: 20em; }
+.users_listing_image > img {
+  height: 230px;
+  width: 300px;
 }
 .users.listings.off {
   background-color: grey;
@@ -112,7 +124,7 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 40px;
+  width: 50px;
   height: 20px;
   input {
     display: none;
@@ -123,7 +135,7 @@
 input:checked + .slider {
   background-color: #005496;
   &:before {
-    transform: translateX(18px);
+    transform: translateX(29px);
   }
 }
 
@@ -144,7 +156,7 @@ input:focus + .slider {
     content: "";
     height: 15px;
     width: 15px;
-    left: 4px;
+    left: 3px;
     bottom: 2px;
     background-color: white;
     transition: .4s;
