@@ -1,4 +1,4 @@
-<%= form_for @listing, html: { multipart: true } do |f| %>
+<%= form_for @listing, html: { :class => 'form-horizontal new_listing', multipart: true } do |f| %>
 
 <% if @listing.errors.any? %>
   <div id="error_explanation">
@@ -17,40 +17,48 @@
     <%= f.hidden_field :longitude %>
   </p>
 
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
+  <div class="form-group">
+    <%= f.label :name, nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10 ">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :image, "Photo" %><br>
-    <%= f.file_field :image %>
-  </p>
+  <div class="form-group">
+    <%= f.label :image, "Photo", class: 'col-sm-2 control-label' %>
+    <%= f.file_field :image, class: 'form-control-static' %>
+  </div>
 
-  <p>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </p>
+  <div class="form-group">
+    <%= f.label :address, nil, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10 ">
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
+  <div class="form-group">
+    <%= f.label :details, nil, class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10 ">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </p>
+  <div class="form-group">
+    <%= f.label :price, class: 'col-sm-2 control-label'%>
+    <div class="col-sm-10 ">
+      <%= f.text_field :price, class: 'form-control' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :start, "Start Time" %>
+  <div class="form-group">
+    <%= f.label :start, "Start Time", class: 'col-sm-2 control-label' %>
     <%= f.select :start, @array_of_full_times, prompt: "Start" %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :end, "End Time" %>
+  <div class="form-group">
+    <%= f.label :end, "End Time", class: 'col-sm-2 control-label'%>
     <%= f.select :end, @array_of_full_times[1..-1], prompt: 'End' %>
-  </p>
+  </div>
 
   <p>
     <%= f.submit %>

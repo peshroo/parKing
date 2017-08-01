@@ -1,6 +1,6 @@
 <%= form_tag listing_search_path, method: :get do %>
 
-  <%= text_field_tag :term %>
+  <%= text_field_tag :term, nil, class: 'form-control search-control' %>
   <%= select_hour Time.now.hour, ampm: true %>
   <%= submit_tag "Search" %>
 
