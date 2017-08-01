@@ -15,6 +15,7 @@ class Listing < ApplicationRecord
     # path: ":rails_root/public/system/:attachment/:id/:style/:filename",
     # url: "/system/:attachment/:id/:style/:filename",
     default_url: 'no_parking_:style.png'
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   do_not_validate_attachment_file_type :image
 

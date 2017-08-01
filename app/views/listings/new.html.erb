@@ -1,18 +1,28 @@
-<div class="new_listing_form_container">
-  <h2>New Listing</h2>
-  <div class="new_listing_form_div">
-    <%= render 'form', listing: @listing %>
-  </div>
-  <div class="pac-card" id="pac-card">
-    <div id="pac-container">
-        <input ng-model="foundaddress" id="pac-input" type="text" placeholder="Enter a location" >
+<!-- <div class="new_listing_form_container"> -->
+
+  <section class="newlistingimage">
+    <div class="newlistingheader">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      New Listing.
+    </div>
+  </section>
+
+  <div class="newlistingblankspace">
+    <div class="new_listing_form_div">
+      <%= render 'form', listing: @listing %>
+    </div>
+    <div class="pac-card" id="pac-card">
+      <div id="pac-container">
+          <input ng-model="foundaddress" id="pac-input" type="text" placeholder="Enter a location" >
+      </div>
+    </div>
+    <div id="new_listing_map">
+    </div>
+    <div id="infowindow-content">
+        <img src="" width="16" height="16" id="place-icon">
+        <span id="place-name"  class="title"></span><br>
+        <span id="place-address"></span>
     </div>
   </div>
-  <div id="new_listing_map">
-  </div>
-  <div id="infowindow-content">
-      <img src="" width="16" height="16" id="place-icon">
-      <span id="place-name"  class="title"></span><br>
-      <span id="place-address"></span>
-  </div>
-</div>
+
+<!-- </div> -->
