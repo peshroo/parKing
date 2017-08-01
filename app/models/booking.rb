@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
 
   # validate :booking_start_time_is_during_open_hours
   # validate :booking_end_time_is_during_open_hours
-  # validate :user_has_enough_money
+  validate :user_has_enough_money
 
   before_create do
    self.date = Date.today unless self.date
@@ -14,6 +14,9 @@ class Booking < ApplicationRecord
     if user.wallet < (listing.price * (end_time - start_time))
       errors.add(:user_id, "has insufficient funds")
     end
+    print "FGJFIHKGJKLKHGKLKGH"
+    print user
+    print user.wallet
   end
 
   def booking_start_time_is_during_open_hours

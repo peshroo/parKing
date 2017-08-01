@@ -77,6 +77,19 @@ class BookingsController < ApplicationController
     end
 
     def create
+      timess = (@listing.start...24).to_a
+      timess.concat((0...@listing.end).to_a)
+      @array_of_times = timess.map do |hours|
+        meridian = (hours >= 12) ? 'pm' : 'am'
+        hour = hours
+          case hours
+          when 0, 12 then hour = 12
+           when 13 .. 23 then hour -= 12
+           else
+            hour
+        end
+        ["#{hour} #{meridian}", hours]
+      end
       @booking = Booking.new(booking_params)
       @booking.user_id = session[:user_id]
       @booking.listing_id = @listing.id
@@ -89,8 +102,9 @@ class BookingsController < ApplicationController
         redirect_to user_bookings_path
       else
         flash[:alert] = "Something went wrong!"
-        # redirect_to listing_path(@listing.id)
-        render 'listings/show', :params => {id: @listing.id}
+        redirect_to @listing
+        # render 'listings/show', :params => {id: @listing.id}
+
       end
     end
 
