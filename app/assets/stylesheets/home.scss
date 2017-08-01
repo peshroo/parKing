@@ -63,7 +63,7 @@ header {
     margin-left: 20px;
   }
 }
-.container {
+.main-container {
   height:100%;
   width: 100%;
 }
@@ -73,16 +73,10 @@ header {
   height: 100%;
   width: 100%;
 }
-// .search_listing {
-//   position: relative;
-//   width: 100%;
-//   height: 100%;
-//   form {
-//     position: absolute;
-//     top: 20em;
-//     left: 42%;
-//   }
-// }
+.search_listing {
+  width: 700px;
+  margin: auto;
+}
 
 .kingweight {
   font-weight: 900;
@@ -97,10 +91,16 @@ header {
   background-color: white;
   height:300px;
   width: 100%;
+  padding-top: 20px;
   text-align: center;
   .column-left{ float: left; width: 20%; margin-left: 13%; }
   .column-right{ float: right; width: 20%; margin-right: 13%; }
   .column-center{ display: inline-block; width: 20%; }
+}
+
+.search-control {
+  width: 80% !important;
+  float: left !important;
 }
 
 .home-second-blank-space {
@@ -108,6 +108,7 @@ header {
   background-color: white;
   height:300px;
   width: 100%;
+  padding-top:20px;
   text-align: center;
   .column-left{ float: left; width: 20%; margin-left: 13%; }
   .column-right{ float: right; width: 20%; margin-right: 13%; }
@@ -115,20 +116,22 @@ header {
 }
 
 .home-second-image {
-  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-137089.jpg");
-  background-repeat: no-repeat;
+  background-image: url("main_background2.jpg");
   background-size: cover;
-  height:100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 300px;
 }
 
 .home.index {
   // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138208.jpg");
-  background-repeat: no-repeat;
+  background-image: url("main_background1.jpg");
   background-size: cover;
-  margin-top: -170px;
-  height:100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height:500px;
   position: relative;
+  margin-top: 58px;
 //   overflow: hidden;
   .book,
   .list {
@@ -172,9 +175,7 @@ header {
     weight: bold;
     size: 200px;
   }
-  position: absolute;
-  top: 195px;
-  left: 410px;
+  margin-top:75px;
 }
 
 .howitworks {
@@ -182,12 +183,11 @@ header {
   color: white;
   text-decoration: none;
   background-color: transparent;
+  font-size: 1000%;
+  height: 100%;
   font: {
     weight: bold;
-    size: 200px;
   }
-  position: absolute;
-  top: 721px;
 }
 
 .book,

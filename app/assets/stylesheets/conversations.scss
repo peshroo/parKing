@@ -3,35 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .convoimage {
   background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-450481.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
-  margin-top: -28%;
-  background-color: white;
-  height:100%;
-  width: 100%;
-  text-align: center;
-}
-
-.convoblankspace {
-  margin: 0;
-  background-color: white;
-  height:500px;
-  width: 100%;
-  text-align: center;
-}
-
-.mailboxheader {
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  background-color: transparent;
-  font: {
-    weight: bold;
-    size: 200px;
-  }
-  position: absolute;
-  top: 46px;
 }
 
 .mailboxconvo { float: left; width: 20%; margin-left: 13%; }

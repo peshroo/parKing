@@ -3,33 +3,4 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .messagesimage {
   background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-137320.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
-  margin-top: -28%;
-  background-color: white;
-  height:100%;
-  width: 100%;
-  text-align: center;
-}
-
-.messagesblankspace {
-  margin: 0;
-  background-color: white;
-  height:500px;
-  width: 100%;
-  text-align: center;
-}
-
-.messagesheader {
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  background-color: transparent;
-  font: {
-    weight: bold;
-    size: 200px;
-  }
-  position: absolute;
-  top: 46px;
 }

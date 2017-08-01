@@ -186,23 +186,3 @@ input#user_password_confirmation {
   border: 1px solid black;
 
 }
-@media all and (min-width: 1300px) {
-  .search_listing form {
-    width: 30%;
-    left: 37%;
-    input[type=text] {
-      padding: 10px;
-      width: 60%;
-    }
-  }
-.homepage_container > .search_listing > form > input[type=submit] {
-    padding: 11px;
-  }
-#date_hour {
-  padding: 9px;
-}
-.homepage_container > .bookyourspot {
-  top: 260px;
-  left: 495px;
-}
-}
