@@ -9,16 +9,22 @@
     left: 12%;
     position: absolute;
     input[type=text] {
-      padding: 10px;
-      width: 60%;
+      padding: 18px;
     }
   }
 }
 .homepage_container > .search_listing > form > input[type=submit] {
-    padding: 11px;
+    padding: 10px;
+    position: absolute;
+    right: 12px;
   }
 #date_hour {
   padding: 9px;
+  background-color: white;
+  border-top: 1px solid lightgreen;
+  border-bottom: 1px solid lightgreen;
+  border-right: 1px solid lightgreen;
+  position: absolute;
 }
 .homepage_container > .bookyourspot {
   top: 260px;

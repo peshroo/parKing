@@ -2,15 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .userprofileimage {
-  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-137130.jpg");
+  background-image: url("profile_bg.jpg");
 }
 
 .userlistingsimage {
-  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-106289.jpg");
+  background-image: url("listings_bg.jpg");
 }
 
 .userbookingsimage {
-  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-99464.jpg");
+  background-image: url("bookings_bg.jpg");
 }
 
 .userprofileimage,
@@ -30,11 +30,16 @@
 
 .profileblankspace,
 .convoblankspace,
-.userbookingsblankspace,
-.userlistingsblankspace {
+.userbookingsblankspace {
   margin: 0;
   background-color: white;
   height:500px;
+  width: 100%;
+  text-align: center;
+}
+.userlistingsblankspace {
+  margin: 0;
+  background-color: white;
   width: 100%;
   text-align: center;
 }
