@@ -1,11 +1,101 @@
 // Place all the styles related to the Conversations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.conversations.index {
-  // background-image: url("https://forged.rpmware.com/storage/hero1.jpg");
-  // background-image: url("http://www.magic4walls.com/wp-content/uploads/2016/05/white-ford-mustang-2015-aristo-collection-Golden-Gate-Bridge-night.jpg");
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  background-color: rgb(26, 26, 26);
-  color: white;
+.convoimage {
+  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-450481.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  margin-top: -28%;
+  background-color: white;
+  height:100%;
+  width: 100%;
+  text-align: center;
 }
+
+.convoblankspace {
+  margin: 0;
+  background-color: white;
+  height:500px;
+  width: 100%;
+  text-align: center;
+}
+
+.mailboxheader {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  font: {
+    weight: bold;
+    size: 200px;
+  }
+  position: absolute;
+  top: 46px;
+}
+
+.mailboxconvo { float: left; width: 20%; margin-left: 13%; }
+.usersconvo { float: right; width: 20%; margin-right: 13%; }
+
+// .convo {
+//   position: absolute;
+//   top: 700px;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   margin: auto;
+//     padding: 5px;
+//     padding-left: 15px;
+//     padding-right: 15px;
+//     width: auto;
+//     height: 300px;
+//     color: white;
+//     text-decoration: none;
+//     background-color: rgba(255, 255, 255, 0.5);
+//     transition: all 0.25s ease 0s;
+//     font: {
+//       weight: bold;
+//       size: 18px;
+//     }
+//     // &:hover {
+//     //   background-color: white;
+//     //   color: black;
+//     // }
+// }
+//
+//
+// .mailboxconvo,
+// .usersconvo {
+//   text-align: center;
+//   a {
+//     border: 3px solid white;
+//     padding: 5px;
+//     padding-left: 15px;
+//     padding-right: 15px;
+//     width: 150px;
+//     color: white;
+//     text-decoration: none;
+//     background-color: transparent;
+//     transition: all 0.25s ease 0s;
+//     font: {
+//       weight: bold;
+//       size: 18px;
+//     }
+//     &:hover {
+//       background-color: white;
+//       color: black;
+//     }
+//   }
+// }
+//
+// .mailboxconvo a {
+//   position: absolute;
+//   top: 200px;
+//   left: 10%;
+// }
+//
+// .usersconvo a {
+//   position: absolute;
+//   top: 200px;
+//   left: 60%;
+// }

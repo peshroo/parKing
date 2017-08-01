@@ -77,8 +77,8 @@
   }
 }
 .search_listing > form {
-  position: fixed;
-  top: 55%;
+  position: absolute;
+  top: 65%;
   left: 35%;
   input[type=text] {
     border: 1px solid #2BDE73;
