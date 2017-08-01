@@ -8,7 +8,7 @@
   <div class="profile_user_info">
     <br><span class='parkingsize'><%= @user.first_name %><span class='kingweight'> <%= @user.last_name %></span></span>
     <p>Email: <%= @user.email %></p>
-    <p>Wallet: $<%= current_user.wallet %></p>
+    <p>Wallet: $<%= current_user.wallet %>0</p>
   </div>
   <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', id: "edit", :remote => true %>
   <%= link_to "Delete Account", "/users/#{@user.id}", method: :delete, data: {confirm: "Are you sure you want to delete your account? This will also delete any existing listings and bookings!"} %>
