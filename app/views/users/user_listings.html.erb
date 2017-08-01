@@ -7,7 +7,7 @@
 <div class="userlistingsblankspace">
 
   <% if @listings.count > 0 %>
-    <br><%= link_to "Make a new listing!".html_safe, new_listing_path %>
+    <br><%= link_to "Make a new listing!".html_safe, new_listing_path, id: "makenewlisting" %>
     <br>
     <div class="user_partial">
       <%= render partial: 'listings' %>

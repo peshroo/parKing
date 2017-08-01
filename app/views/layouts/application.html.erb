@@ -60,7 +60,9 @@
           </ul>
 
           <% else %>
-
+          <span class="homepage_avatar">
+            <span id="funds">Don't have an account?</span><%= link_to "Sign up!", root_url, class: "new_user_link", id: "new_user_link" %>
+          </span>
           <ul class="topnav links">
             <li class="sub-menu-parent">
               <div class="side-bar">
@@ -72,7 +74,6 @@
 
                 <li id= "drop"><a href="#" class="login_link">Login</a></li>
                 <li id= "drop"><a href="#" class="new_user_link">Register</a></li>
-                <li id= "drop"><%= link_to "About", "/about" %></li>
 
               </ul>
             </li>
