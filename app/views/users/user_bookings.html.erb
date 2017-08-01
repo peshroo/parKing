@@ -5,21 +5,18 @@
 </section>
 
 <div class="userbookingsblankspace">
-  <div class="user_profile">
-    <div class="profile_user_info">
-      <h3><%= @user.full_name %></h3>
-      <p><%= @user.email %></p>
-      <p>Wallet: $<%= current_user.wallet %></p>
-    </div>
-    <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
-    <%= link_to "Delete this account", "/users/#{current_user.id}", method: :delete, data: {confirm: "Are you sure you want to delete your account? This will also delete any existing listings and bookings!"} %>
-    <%= link_to "My Listings", show_user_listings_path, class: 'show_listings_link', remote: true %>
-    <%= link_to "Booking History", show_user_bookings_path, class: 'show_bookings_link', remote: true %>
-    <div class="user_partial">
-     <%= render partial: 'bookings' %>
-    </div>
-  </div>
-  <div class="review_form">
 
-  </div>
+  <% if @bookings.count > 0 %>
+    <br><%= link_to "Look for another spot!".html_safe, root_url %>
+    <br>
+    <div class="user_partial">
+      <%= render partial: 'bookings' %>
+    </div>
+    <div class="review_form">
+    </div>
+  <% else %>
+    <br>You have no bookings!
+    <br><%= link_to "Look for another spot!".html_safe, root_url %>
+  <% end %>
+
 </div>

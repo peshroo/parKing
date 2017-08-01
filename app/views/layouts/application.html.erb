@@ -2,7 +2,7 @@
 <html>
 <head>
 
-  <title>parKing</title>
+  <title>parKING</title>
 
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -30,7 +30,7 @@
   <main class="main-container">
     <header class="header">
       <div class="header-container">
-        <%= link_to "<span class='parkingsize'>p a r <span class='kingweight'>K i n g</span></span>".html_safe, root_url %>
+        <%= link_to "<span class='parkingsize'>p a r <span class='kingweight'>K I N G</span></span>".html_safe, root_url %>
         <nav class="topnav">
 
           <% if current_user %>
@@ -91,45 +91,45 @@
         </div
 
         <ul class="sub-menu">
-          <li><%= link_to "About us", "/about" %></li>
-          <li><%= link_to "Careers", "/careers" %></li>
-          <li><%= link_to "Press", "/press" %></li>
-          <li><%= link_to "Policies", "/policies" %></li>
-          <li><%= link_to "Help", "/help" %></li>
+          <li><%= link_to "Business", "#" %></li>
+          <li><%= link_to "Compare", "#" %></li>
+          <li><%= link_to "Features", "#" %></li>
+          <li><%= link_to "Pricing", "#" %></li>
+          <li><%= link_to "Download", "#" %></li>
         </ul>
       </div>
       <div class="column-center">
         <div class="footer-container">
           <% if current_user %>
-            <%= link_to "<span class='parkingsize'>g o<span class='kingweight'> B O O K</span></span>".html_safe, listing_search_form_path %>
+            <%= link_to "<span class='parkingsize'>p a r k<span class='kingweight'> B O O K</span></span>".html_safe, root_url %>
           <% else %>
-            <a href="#" class="login_link"><span class='parkingsize'>g o<span class='kingweight'> B O O K</span></span></a>
+            <a href="#" class="login_link"><span class='parkingsize'>p a r k<span class='kingweight'> B O O K</span></span></a>
           <% end %>
         </div
 
         <ul class="sub-menu">
-          <li><%= link_to "About us", "/about" %></li>
-          <li><%= link_to "Careers", "/careers" %></li>
-          <li><%= link_to "Press", "/press" %></li>
-          <li><%= link_to "Policies", "/policies" %></li>
-          <li><%= link_to "Help", "/help" %></li>
+          <li><%= link_to "About Us", "#" %></li>
+          <li><%= link_to "Blog", "#" %></li>
+          <li><%= link_to "News", "#" %></li>
+          <li><%= link_to "Press Releases", "#" %></li>
+          <li><%= link_to "Jobs", "#" %></li>
         </ul>
       </div>
       <div class="column-right">
         <div class="footer-container">
           <% if current_user %>
-            <%= link_to "<span class='parkingsize'>g o<span class='kingweight'> L I S T</span></span>".html_safe, new_listing_path %>
+            <%= link_to "<span class='parkingsize'>p a r k<span class='kingweight'> L I S T</span></span>".html_safe, new_listing_path %>
           <% else %>
-            <a href="#" class="login_link"><span class='parkingsize'>g o<span class='kingweight'> L I S T</span></span></a>
+            <a href="#" class="login_link"><span class='parkingsize'>p a r k<span class='kingweight'> L I S T</span></span></a>
           <% end %>
         </div
 
         <ul class="sub-menu">
-          <li><%= link_to "About us", "/about" %></li>
-          <li><%= link_to "Careers", "/careers" %></li>
-          <li><%= link_to "Press", "/press" %></li>
-          <li><%= link_to "Policies", "/policies" %></li>
-          <li><%= link_to "Help", "/help" %></li>
+          <li><%= link_to "Support", "#" %></li>
+          <li><%= link_to "Developers", "#" %></li>
+          <li><%= link_to "Referral Program", "#" %></li>
+          <li><%= link_to "Affiliate Program", "#" %></li>
+          <li><%= link_to "Contact Us", "#" %></li>
         </ul>
       </div>
 
