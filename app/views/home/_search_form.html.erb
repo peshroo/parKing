@@ -1,7 +1,7 @@
 <%= form_tag listing_search_path, method: :get do %>
 
   <%= text_field_tag :term %>
-  <%= select_hour Time.now.hour, ampm: true %>
+  <%= select_hour Time.now.hour, ampm: true, prompt: 'When' %>
   <%= submit_tag "Search" %>
 
 <% end %>
