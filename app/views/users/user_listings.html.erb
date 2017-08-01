@@ -6,6 +6,9 @@
 </section>
 
 <div class="userlistingsblankspace">
+  
+  <br><%= link_to "<span class='parkingsize'>n e w <span class='kingweight'>L i s t i n g</span></span>".html_safe, new_listing_path %>
+
   <div class="user_profile">
     <div class="profile_user_info">
       <h3><%= current_user.full_name %></h3>

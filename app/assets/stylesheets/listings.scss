@@ -59,14 +59,7 @@
        border-color: #4d90fe;
         }
       }
-    #new_listing_map {
-      height: 460px;
-      width: 60%;
-      position: absolute;
-      right: 6em;
-      top: 1em;
-      display: inline-block;
-    }
+
     .new_listing_form_div {
       width: 30%;
       position: absolute;
@@ -76,6 +69,14 @@
     }
   }
 }
+#new_listing_map {
+  height: 460px;
+  width: 60%;
+  position: absolute;
+  right: 6em;
+  top: 20em;
+  display: inline-block;
+}
 .search_listing > form {
   position: absolute;
   top: 65%;
@@ -84,7 +85,10 @@
     border: 1px solid #2BDE73;
   }
   select {
-    padding: 12px;
+    padding: 4px;
+  }
+  input[type=submit] {
+    padding: 6px;
   }
 }
 .listings.show {
@@ -162,4 +166,37 @@
       background-position: 0 0;
     }
   }
+}
+
+.newlistingimage {
+  background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-138242.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  margin-top: -28%;
+  background-color: white;
+  height:100%;
+  width: 100%;
+  text-align: center;
+}
+
+.newlistingblankspace {
+  margin: 0;
+  background-color: white;
+  height:500px;
+  width: 100%;
+  // text-align: center;
+}
+
+.newlistingheader {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  font: {
+    weight: bold;
+    size: 200px;
+  }
+  position: absolute;
+  top: 46px;
 }
