@@ -1,12 +1,13 @@
 <section class="userprofileimage">
   <div class="profileheader">
+    <i class="fa fa-user" aria-hidden="true"></i>
     Profile.
   </div>
 </section>
 
 <div class="profileblankspace">
   <div class="profile_user_info">
-    <h3><%= @user.full_name %></h3>
+    <br><span class='parkingsize'><%= @user.first_name %><span class='kingweight'> <%= @user.last_name %></span></span>
     <p>Email: <%= @user.email %></p>
     <p>Wallet: $0.00000</p>
   </div>
