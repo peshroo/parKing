@@ -280,19 +280,20 @@ header {
 .login {
   display: none;
   position: fixed;
+  height: 100%;
   top: 0;
   bottom: 0;
-  height: 100%;
   width: 100%;
   background-color: rgba(30,30,30,0.8);
   z-index: 200;
 }
 
+
 .new_user > form,
 .login > form {
   display: block;
   width: 400px;
-  height: 24em;
+  height: 33.5em;
   padding: 2em;
   background-color: white;
   position: absolute;
@@ -303,12 +304,14 @@ header {
   right: 0;
   position: relative;
 }
-
+.new_user label {
+  margin-bottom: 0;
+}
 .new_user > form input {
     display: block;
     border: none;
     outline: none;
-    padding: 0.5em;
+    padding: 5px;
     width: 100%;
     margin: 1em 0;
     color: #555;
