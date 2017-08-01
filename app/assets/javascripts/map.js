@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function(){
             // map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: map,
-              position: { lat: result.latitude, lng: result.longitude }
+              position: { lat: result.latitude, lng: result.longitude },
               // position: results[0].geometry.location
             });
             marker.addListener('click', function() {
@@ -259,7 +259,16 @@ document.addEventListener("DOMContentLoaded", function(){
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
+          console.log('Hi');
           listingAddress.value = address;
+          // var addressField = document.querySelector('#listing_address').value
+          // geocoder.geocode({'address': address}, function(results, status) {
+          //     console.log(results[0].geometry.location.lat())
+          //     if (status === 'OK') {
+          //       document.querySelector('#new_listing input[id="listing_latitude"]').value = results[0].geometry.location.lat()
+          //       document.querySelector('#new_listing input[id="listing_longitude"]').value = results[0].geometry.location.lng()
+          //     }
+          //   })
           infowindowContent.children['place-icon'].src = place.icon;
           infowindowContent.children['place-name'].textContent = place.name;
           infowindowContent.children['place-address'].textContent = address;

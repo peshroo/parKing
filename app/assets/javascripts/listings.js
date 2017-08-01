@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var that = this
     var address = document.querySelector('#new_listing input[id="listing_address"]').value
     var geocoder= new google.maps.Geocoder();
+
     console.log("about to request geocoder")
 
     geocoder.geocode({'address': address}, function(results, status) {
@@ -75,23 +76,26 @@ document.addEventListener('DOMContentLoaded', function() {
       if (status === 'OK') {
         document.querySelector('#new_listing input[id="listing_latitude"]').value = results[0].geometry.location.lat()
         document.querySelector('#new_listing input[id="listing_longitude"]').value = results[0].geometry.location.lng()
+        var formData = new FormData(document.getElementById('new_listing'));
         $.ajax({
           url: $(that).attr('action'),
           method: $(that).attr('method'),
-          data: $(that).serialize(),
+          contentType: false,
+          processData: false,
+          data: formData,
         }).done(function(response) {
           console.log('geocoder OK')
           window.location.href = '/user_listings'
         });
       }
     });
-    //   console.log(address)
-    //   console.log(results[0].geometry.location.lat() + results[0].geometry.location.lng())
-    //   if (status == 'OK') {
-    // } else {
-    //   console.log('Geocode was not successful for the following reason: ' + status);
-    // }
-    // })
+  //   //   console.log(address)
+  //   //   console.log(results[0].geometry.location.lat() + results[0].geometry.location.lng())
+  //   //   if (status == 'OK') {
+  //   // } else {
+  //   //   console.log('Geocode was not successful for the following reason: ' + status);
+  //   // }
+  //   // })
   //   //
   //   //   // .done(function(response) {
   //   //   //   console.log("DONE" + response)

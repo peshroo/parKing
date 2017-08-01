@@ -57,12 +57,13 @@ class ListingsController < ApplicationController
         end
         ["#{hour} #{meridian}", hours]
       end
-      puts params
+      print params
     end
 
     def create
+      print params
       @listing = Listing.new(listing_params)
-      
+
       if @listing.save
         wallet = @listing.user.wallet + 0.50
         @listing.user.update(wallet: wallet)
