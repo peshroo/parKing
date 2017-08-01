@@ -6,21 +6,142 @@ document.addEventListener("DOMContentLoaded", function(){
       xhr.setRequestHeader('X-CSRF-TOKEN', token);
     }
   });
+  function getAvg(array) {
+    return array.reduce(function (p, c) {
+      return p + c;
+    }) / array.length;
+  }
+  $.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        val = Math.round(val * 2) / 2; /* To round to nearest half */
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+  }
+
   // function initMap(){
   window.initMap = function() {
     if (document.getElementById('map')) {
+      var map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 43.6532, lng: -79.3832 },
+      zoom: 11
+    });
+    var infoWindow = new google.maps.InfoWindow;
+    var geocoder = new google.maps.Geocoder();
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        console.log(pos)
+        map.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+        var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+          var marker2 = new google.maps.Marker({
+            map: map,
+            position: currentLocation,
+            icon: '/crown2.png',
+            animation: dropdown,
+          });
+
+          var options = {
+            zoom: 13,
+            center: currentLocation,
+          }
+
+        map = new google.maps.Map(document.getElementById('map'), options);
+      });
+    } else {
+    // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+      console.log('failed navigator')
+    }
 
 
-      // Map options
-      var options = {
-        zoom: 13,
-        center: {lat: 43.6532, lng: -79.3832}
-      }
 
-      // New map
-      var map = new google.maps.Map(document.getElementById('map'), options);
-      var infoWindow = new google.maps.InfoWindow;
-      var geocoder= new google.maps.Geocoder();
+
+    // Note: This example requires that you consent to location sharing when
+          // prompted by your browser. If you see the error "The Geolocation service
+          // failed.", it means you probably did not give permission for the browser to
+          // locate you.
+    // var map, infoWindow;
+    // function initMap() {
+    //   map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat: -34.397, lng: 150.644},
+    //     zoom: 6
+    //   });
+    //   infoWindow = new google.maps.InfoWindow;
+
+    // Try geolocation.
+
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+                             'Error: The Geolocation service failed.' :
+                             'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+
+
+  // Map options
+
+    function handleSearchResults(results, status){
+      console.log(results);
+
+    for(var i = 0; i < results.length; i++){
+
+      var marker = new google.maps.Marker({
+        map:map,
+        position: results[i].geometry.location,
+        icon: '/crown4.png',
+      });
+    }
+
+    function performSearch(){
+      var request = {
+        bounds: map.getBounds(),
+        name: "parking",
+      };
+    }
+    service.nearbySearch(request, handleSearchResults);
+    // this ensures we wait until the map bounds are initialized before we perform the search
+    google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
+
+    // draw circle on map
+    var circleOptions = new google.maps.Circle({
+      center:currentLocation,
+      radius:20000,
+      strokeColor:"#0000FF",
+      strokeOpacity:0.8,
+      strokeWeight:2,
+      fillColor:"#0000FF",
+      fillOpacity:0.4
+    });
+    circle = new googlemaps.Circle(circleOptions)
+}
+      //
+      // // Map options
+      // var options = {
+      //   zoom: 13,
+      //   center: {lat: 43.6532, lng: -79.3832}
+      // }
+      //
+      // // New map
+      // var map = new google.maps.Map(document.getElementById('map'), options);
+      // var infoWindow = new google.maps.InfoWindow;
+      // var geocoder= new google.maps.Geocoder();
 
       function human_time(hours) {
         var suffix = hours >= 12 ? "PM":"AM";
@@ -30,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
 
       $.ajax({
-        url: 'http://localhost:3000/listing_markers',
+        url: '/listing_markers',
         method: 'GET',
         dataType: 'json',
       }).done(function(results) {
@@ -38,15 +159,25 @@ document.addEventListener("DOMContentLoaded", function(){
         // console.log(results.filter(function(item) {return item.latitude === null}))
 
         results.filter(function(item) {return item.status === true}).forEach(function(result) {
+          var ratingArray = result.reviews.map(function(review) {
+            return review.rating
+          })
+          if (ratingArray.length) {
+            var theAvg = getAvg(ratingArray)
+          } else {
+            var theAvg = 0
+          }
           var content = '<div id="content">' +
           '<h2 class="listing_heading">' + result.name + '</h2>' +
           '<div class="content_body"><p><b>' + result.address + '</b></p>' +
+          '<p>Rating: <span class="stars">' + theAvg + '</span></p>' +
           // '<p><img src="' + result.image.url(:medium) + '" alt="Listing Image" height="150" width="250"></p>' +
           '<p>Posted By: ' + result.user.first_name + ' ' + result.user.last_name + '</p>' +
           '<p>From: ' + human_time(result.start) + ' - ' + human_time(result.end) +
           '<a href="/listings/' + result.id + '">Book Now </a>' + '</p>' +
           '</div>';
-
+          $('span.stars').stars();
+          console.log(ratingArray)
         // console.log(content);
         var infowindow = new google.maps.InfoWindow({
           content: content
@@ -73,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function(){
             // map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: map,
-              position: { lat: result.latitude, lng: result.longitude }
+              position: { lat: result.latitude, lng: result.longitude },
               // position: results[0].geometry.location
             });
             marker.addListener('click', function() {
@@ -85,6 +216,66 @@ document.addEventListener("DOMContentLoaded", function(){
         // })
         })
       })
+    } else if (document.getElementById('new_listing_map')) {
+      var options = {
+        zoom: 13,
+        center: {lat: 43.6532, lng: -79.3832}
+      }
+      var map = new google.maps.Map(document.getElementById('new_listing_map'), options);
+      var listingAddress = document.getElementById('listing_address')
+      var input = document.getElementById('pac-input');
+      var card = document.getElementById('pac-card');
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+      var infowindow = new google.maps.InfoWindow();
+
+      var infowindowContent = document.getElementById('infowindow-content');
+
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.bindTo('bounds', map);
+        var marker = new google.maps.Marker({
+          map: map,
+          anchorPoint: new google.maps.Point(0, -29)
+        });
+        autocomplete.addListener('place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            window.alert("No details available for input: '" + place.name + "'");
+          }
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+          }
+          marker.setPosition(place.geometry.location);
+          marker.setVisible(true);
+          var address = '';
+          if (place.address_components) {
+            address = [
+              (place.address_components[0] && place.address_components[0].short_name || ''),
+              (place.address_components[1] && place.address_components[1].short_name || ''),
+              (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+          console.log('Hi');
+          listingAddress.value = address;
+          // var addressField = document.querySelector('#listing_address').value
+          // geocoder.geocode({'address': address}, function(results, status) {
+          //     console.log(results[0].geometry.location.lat())
+          //     if (status === 'OK') {
+          //       document.querySelector('#new_listing input[id="listing_latitude"]').value = results[0].geometry.location.lat()
+          //       document.querySelector('#new_listing input[id="listing_longitude"]').value = results[0].geometry.location.lng()
+          //     }
+          //   })
+          infowindowContent.children['place-icon'].src = place.icon;
+          infowindowContent.children['place-name'].textContent = place.name;
+          infowindowContent.children['place-address'].textContent = address;
+          infowindowContent.style.display = 'block'
+          infowindow.setContent(infowindowContent);
+          infowindow.open(map, marker);
+        });
     }
     }
 

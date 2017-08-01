@@ -10,7 +10,7 @@
     <div class="profile_user_info">
       <h3><%= @user.full_name %></h3>
       <p><%= @user.email %></p>
-      <p>Wallet: $0.00</p>
+      <p>Wallet: $<%= current_user.wallet %></p>
     </div>
     <%= link_to "Edit Account", edit_user_form_path, class: 'edit_form_link', :remote => true %>
     <%= link_to "Delete this account", "/users/#{current_user.id}", method: :delete, data: {confirm: "Are you sure you want to delete your account? This will also delete any existing listings and bookings!"} %>

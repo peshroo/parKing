@@ -5,6 +5,7 @@
   height: 550px;
   margin-top: 4em;
 }
+
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
@@ -124,6 +125,7 @@ li.sub-menu-parent{
 }
 
 a#profile-link {
+//    width: 200px;
    color: white;
    font-weight: bold;
    padding: 20px 0px;
@@ -149,14 +151,14 @@ input[type=text],
 input[type=number],
 input[type=password],
 input[type=email] {
-  padding: 1em;
+  padding: 5px;
   border: 0;
-  border: 1px solid #f0f0f0 ;
+  border: 1px solid #8bfbb5 ;
 
 }
 
 input[type=submit] {
-  padding: 1em;
+  padding: 10px;
   color: white;
   background-color: #2BDE73 ;
   border: 0;
@@ -169,7 +171,8 @@ input[type=submit] {
 }
 
 textarea {
-  width: 20%;
+  height: 10%;
+  width: 50%;
   border: 1px solid #f0f0f0 ;
 
 }

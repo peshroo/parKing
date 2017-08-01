@@ -45,22 +45,51 @@ class ListingsController < ApplicationController
 
     def new
       @listing = Listing.new
+      full_time = (0..23).to_a
+      @array_of_full_times = full_time.map do |hours|
+        meridian = (hours >= 12) ? 'pm' : 'am'
+        hour = hours
+          case hours
+          when 0, 12 then hour = 12
+          when 13 .. 23 then hour -= 12
+           else
+            hour
+        end
+        ["#{hour} #{meridian}", hours]
+      end
+      print params
     end
 
     def create
+      print params
       @listing = Listing.new(listing_params)
 
       if @listing.save
+        wallet = @listing.user.wallet + 0.50
+        @listing.user.update(wallet: wallet)
         flash[:notice] = "Your listing has been successfully created!"
         render html: 'OK'
       else
         render new_listing_path
         # render :new
       end
+      puts params
     end
 
     def edit
       @listing = Listing.find(params[:id])
+      full_time = (0..23).to_a
+      @array_of_full_times = full_time.map do |hours|
+        meridian = (hours >= 12) ? 'pm' : 'am'
+        hour = hours
+          case hours
+          when 0, 12 then hour = 12
+          when 13 .. 23 then hour -= 12
+           else
+            hour
+        end
+        ["#{hour} #{meridian}", hours]
+      end
     end
 
     def update
@@ -93,7 +122,8 @@ class ListingsController < ApplicationController
 
     def search
       if current_user
-        @listings = Listing.where(status: true).where('address LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
+        @listings = Listing.all
+        # @listings = Listing.where(status: true).where('address LIKE ?', "%#{params[:term]}%").select { |t| t.start <= params[:date][:hour].to_i && t.end >= params[:date][:hour].to_i}
       else
         flash[:notice] = "You must be logged in."
         render '/'
@@ -104,13 +134,13 @@ class ListingsController < ApplicationController
       respond_to do |format|
         format.json do
         @listings = Listing.all
-        render json: @listings, include: :user
+        render json: @listings, include: [:reviews, :user]
         end
       end
     end
 private
     def listing_params
-      params.require(:listing).permit(:user_id, :name, :location, :description, :price, :rating, :start, :end, :image, :term, :latitude, :longitude, :address, :status)
+      params.require(:listing).permit(:image, :user_id, :name, :location, :description, :price, :rating, :start, :end, :term, :latitude, :longitude, :address, :status)
     end
 
   end

@@ -111,11 +111,7 @@
     display: none;
   }
 }
-.listings.listing_search_form {
-  background-image: url("https://images5.alphacoders.com/343/343728.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 
 input:checked + .slider {
   background-color: #005496;
@@ -155,7 +151,4 @@ input:focus + .slider {
 }
 .messages.index {
   margin-top: 7em;
-}
-.listings.new {
-  margin-top: 9em;
 }

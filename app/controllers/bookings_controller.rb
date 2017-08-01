@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
     def new
       @booking = Booking.new
+      @bookings = Booking.where(date: Date.today)
       if @listing.start < @listing.end
         times = (@listing.start...@listing.end).to_a
         @array_of_times = times.map do |hours|
@@ -40,6 +41,21 @@ class BookingsController < ApplicationController
           ["#{hour} #{meridian}", hours]
         end
       end
+      @bookings.each do |booking|
+        booking_times = (booking.start_time..booking.end_time).to_a
+        booking_times.each do |booking_time|
+          meridian = (booking_time >= 12) ? 'pm' : 'am'
+          hour = booking_time
+            case booking_time
+            when 0, 12 then hour = 12
+             when 13 .. 23 then hour -= 12
+             else
+              hour
+          end
+          time_do_delete = ["#{hour} #{meridian}", booking_time]
+          @array_of_times.delete(time_do_delete)
+        end
+      end
       # @listing.bookings.each do |booking|
       #   single_booking_array = (booking.start_time..booking.end_time).to_a
       #   single_booking_array_mapped = single_booking_array.map do |hours|
@@ -66,6 +82,8 @@ class BookingsController < ApplicationController
       @booking.listing_id = @listing.id
 
       if @booking.save
+        wallet = @booking.user.wallet - (@listing.price * (@booking.start_time...@booking.end_time).to_a.count)
+        @booking.user.update(wallet: wallet)
         @booking.listing.update(status: false) if @booking.listing.available_hours == false
         flash[:notice] = "Your booking has been successfully created!"
         redirect_to user_bookings_path
@@ -89,6 +107,9 @@ class BookingsController < ApplicationController
     end
 
     def destroy
+      @booking.listing.update(status: true)
+      wallet = @booking.user.wallet + (@listing.price * (@booking.start_time...@booking.end_time).to_a.count)
+      @booking.user.update(wallet: wallet)
       @booking.destroy
       flash[:notice] = "Your booking has been successfully cancelled!"
       redirect_to user_bookings_path

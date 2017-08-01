@@ -23,6 +23,11 @@
   </p>
 
   <p>
+    <%= f.label :image, "Photo" %><br>
+    <%= f.file_field :image %>
+  </p>
+
+  <p>
     <%= f.label :address %>
     <%= f.text_field :address %>
   </p>
@@ -39,17 +44,12 @@
 
   <p>
     <%= f.label :start, "Start Time" %>
-    <%= f.number_field :start, max:23 %>
+    <%= f.select :start, @array_of_full_times, prompt: "Start" %>
   </p>
 
   <p>
     <%= f.label :end, "End Time" %>
-    <%= f.number_field :end, max:23 %>
-  </p>
-
-  <p>
-    <%= f.label :image, "Photo" %><br>
-    <%= f.file_field :image %>
+    <%= f.select :end, @array_of_full_times[1..-1], prompt: 'End' %>
   </p>
 
   <p>
