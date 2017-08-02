@@ -1,6 +1,7 @@
 <div class="show_listing_container">
-  
+
   <div class="show_listing_navcontainer">
+    <% if @listing.user == current_user %>
     <nav class="show_listing_nav">
       <%= link_to 'Edit Listing', edit_listing_path(@listing), class: "listing_link_edit" %>
       |
@@ -10,6 +11,7 @@
       |
       <%= link_to "All Bookings", listing_bookings_path(@listing), class: "listing_link_allb" %>
     </nav>
+    <% end %>
   </div>
   <div class="show_listing_body">
     <div class="show_listing_body_info">

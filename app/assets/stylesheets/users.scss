@@ -29,15 +29,23 @@
 }
 
 .profileblankspace,
-.convoblankspace,
 .userbookingsblankspace,
-.messagesblankspace {
+.messagesblankspace,
+.userlistingsblankspace {
+  margin-bottom: 3em;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  margin-top: 3em;
+}
+.convoblankspace {
+  margin-top: 3em;
   margin: 0;
   background-color: white;
   width: 100%;
   text-align: center;
+  height: 100%;
 }
-
 
 .profileheader,
 .messagesheader,

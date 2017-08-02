@@ -148,14 +148,15 @@ a#dashboard:hover {
   color: black;
 }
 
-
-
-
+.field > input[type=file] {
+  display: inline;
+}
 
 input[type=text],
 input[type=number],
 input[type=password],
-input[type=email] {
+input[type=email],
+input[type=file] {
   padding: 5px;
   border: 0;
   border: 1px solid #8bfbb5 ;
@@ -179,15 +180,5 @@ textarea {
   height: 10%;
   width: 50%;
   border: 1px solid #f0f0f0 ;
-
-}
-input#user_last_name,
-input#user_first_name,
-input#user_email,
-input#user_password,
-input#user_password_confirmation {
-
- border: 0;
-  border: 1px solid black;
 
 }
